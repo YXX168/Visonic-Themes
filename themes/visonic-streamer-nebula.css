@@ -1,7 +1,7 @@
 /*
  * ╔══════════════════════════════════════════════════════════════╗
  * ║  Visonic Streamer - Nebula - 深紫星云暗黑主题                                ║
- * ║  版本: 1.0                                                  ║
+ * ║  版本: 1.1                                                  ║
  * ║  风格: 赛博朋克 / 星云紫光 / 动画拉满                         ║
  * ║  基于 Phycat 架构深度优化，动画细节全面超越                      ║
  * ╚══════════════════════════════════════════════════════════════╝
@@ -1491,4 +1491,28 @@ span.file-node-title {
 .ty-side-sort-btn.active {
   background: var(--active-file-bg-color);
   color: var(--active-file-text-color);
+}
+
+/* ==================== 无障碍与打印优化 ==================== */
+
+/* 尊重系统"减少动态效果"设置：为运动敏感用户关闭所有动画与过渡 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 打印/导出 PDF 时冻结所有动画与过渡，避免截取到中间帧 */
+@media print {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
