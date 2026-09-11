@@ -2,6 +2,11 @@
 
 > Visonic 主题系列 — 一套为 Typora 打造的霓虹动画主题全家桶，**13 款主题**覆盖全天候使用场景。
 
+![Release](https://img.shields.io/github/v/release/YXX168/Visonic-Themes?label=%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC)
+![License](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-green)
+![Themes](https://img.shields.io/badge/%E4%B8%BB%E9%A2%98-13%20%E6%AC%BE-8b5cf6)
+![Platform](https://img.shields.io/badge/%E5%B9%B3%E5%8F%B0-Windows%20%7C%20macOS%20%7C%20Linux-blue)
+
 ## 系列总览
 
 ### Egoism · 液态光影（6 款）
@@ -29,7 +34,7 @@
 
 ## 安装方法
 
-### 一键安装（Windows 推荐）
+### 一键安装（仅 Windows）
 
 1. 下载完整仓库或 Release 压缩包并解压。
 2. 双击运行 `一键安装主题.bat`。
@@ -43,17 +48,23 @@
 
 ### 手动安装
 
+> macOS / Linux 用户请使用下方的手动安装方式。
+
 #### 步骤 1：复制字体依赖（Egoism 系列必须）
 
 将 `visonic-fonts/` 文件夹复制到 Typora 主题目录下：
 
 **Windows**: `C:\Users\<用户名>\AppData\Roaming\Typora\themes\visonic-fonts\`
+**macOS**: `/Users/<用户名>/Library/Application Support/abnerworks.Typora/themes/visonic-fonts/`
+**Linux**: `~/.config/Typora/themes/visonic-fonts/`
 
 #### 步骤 2：安装主题
 
 将 `themes/` 目录下的 13 个 `visonic-*.css` 文件复制到 Typora 主题目录：
 
 **Windows**: `C:\Users\<用户名>\AppData\Roaming\Typora\themes\`
+**macOS**: `/Users/<用户名>/Library/Application Support/abnerworks.Typora/themes/`
+**Linux**: `~/.config/Typora/themes/`
 
 #### 步骤 3：重启 Typora
 
@@ -72,6 +83,7 @@
 - **12 ~ 30 动画效果**：H1 流光扫过下划线、H2 霓虹灯条呼吸、H3 菱形旋转装饰、代码块扫描灯条、呼吸灯、Shimmer 光扫等
 - **暗色 5 款 + 亮色 2 款**：覆盖全天候使用场景
 - **Indigo 特别版**：30 个液体光影关键帧动画、虹彩渐变、玻璃拟态引用块、极光代码块灯条、液态金属标题
+- **无障碍与打印友好**：全部主题支持系统"减少动态效果"（`prefers-reduced-motion`）自动关闭动画，打印/导出 PDF 时冻结动画中间帧
 
 ## 目录结构
 
@@ -99,6 +111,24 @@ Visonic-Themes/
     ├── pages-dev/
     └── lang/
 ```
+
+## 常见问题
+
+**Q：如何卸载主题？**
+删除 Typora 主题目录下的 `visonic-*.css` 文件和 `visonic-fonts/` 文件夹即可；若使用过一键安装的默认主题桥接，再删除 `github.user.css` 恢复 Typora 原默认样式。
+
+**Q：Egoism 主题字体不生效？**
+Egoism 系列的特殊字体（如 DingTalk JinBuTi、Smiley Sans 等）通过 `visonic-fonts/` 中的 CSS 从 CDN 加载，需联网才能生效；离线时会自动回退到系统字体，不影响使用。Streamer 系列不依赖任何字体包。
+
+**Q：动画太多想关掉怎么办？**
+开启系统"减少动态效果"（Windows：设置 → 辅助功能 → 视觉效果；macOS：系统设置 → 辅助功能 → 显示 → 减少动态效果），所有主题会自动关闭动画。
+
+**Q：主题在亮色 / 暗色模式间如何切换？**
+Egoism 系列每款主题自动跟随 Typora 的昼夜模式适配；Streamer 系列通过不同的主题文件区分（如 Sakura / Sunset 为亮色，Matrix / Nebula 为暗色）。
+
+## 更新日志
+
+查看 [CHANGELOG.md](CHANGELOG.md) 了解各版本变更。
 
 ## 许可
 
