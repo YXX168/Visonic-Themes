@@ -1,10 +1,10 @@
 # Visonic Themes for Typora
 
-> Visonic 主题系列 — 一套为 Typora 打造的霓虹动画主题全家桶，**13 款主题**覆盖全天候使用场景。
+> Visonic 主题系列 — 一套为 Typora 打造的霓虹动画主题全家桶，**15 款主题**覆盖全天候使用场景。
 
 ![Release](https://img.shields.io/github/v/release/YXX168/Visonic-Themes?label=%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC)
 ![License](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-green)
-![Themes](https://img.shields.io/badge/%E4%B8%BB%E9%A2%98-13%20%E6%AC%BE-8b5cf6)
+![Themes](https://img.shields.io/badge/%E4%B8%BB%E9%A2%98-15%20%E6%AC%BE-8b5cf6)
 ![Platform](https://img.shields.io/badge/%E5%B9%B3%E5%8F%B0-Windows%20%7C%20macOS%20%7C%20Linux-blue)
 
 ## 系列总览
@@ -32,6 +32,15 @@
 | Visonic Streamer - Sakura | `visonic-streamer-sakura.css` | 樱花飞舞 / 可爱清新 | 亮色粉 | ![Sakura](images/streamer-sakura.png) |
 | Visonic Streamer - Sunset | `visonic-streamer-sunset.css` | 落日余晖 / 温暖治愈 | 亮色橙 | ![Sunset](images/streamer-sunset.png) |
 
+### Glass · 液态玻璃（2 款）
+
+> 参考 macOS 26 Liquid Glass 的 Web CSS 材质表达：环境光、半透明填充、高光描边、背景模糊、层级阴影五层材质，玻璃分级不叠层，文字始终不透明。
+
+| 主题名称 | CSS 文件 | 风格 | 色调 |
+|----------|----------|------|------|
+| Visonic Glass - Glacier | `visonic-glass-glacier.css` | 晨雾白净 / 暖杏冷蓝环境光 | 白色系 |
+| Visonic Glass - Obsidian | `visonic-glass-obsidian.css` | 黑曜暗夜 / 深蓝暗紫环境光 | 黑色系 |
+
 ## 安装方法
 
 ### 一键安装（仅 Windows）
@@ -43,7 +52,7 @@
    - `2`：保留现有主题，仅新增/覆盖 Visonic 主题（推荐）。
 4. 重启 Typora。
 
-脚本会自动复制 `themes/` 下的 13 个主题文件，并同步 `visonic-fonts/` 字体依赖到 Typora 主题目录。
+脚本会自动复制 `themes/` 下的 15 个主题文件，并同步 `visonic-fonts/` 字体依赖到 Typora 主题目录。
 同时会创建 `github.user.css` 默认主题桥接文件，让 Typora 在默认 GitHub 主题下也自动加载 `visonic-streamer-nebula.css`。如需恢复 Typora 原默认样式，删除主题目录中的 `github.user.css` 即可。
 
 ### 手动安装
@@ -60,7 +69,7 @@
 
 #### 步骤 2：安装主题
 
-将 `themes/` 目录下的 13 个 `visonic-*.css` 文件复制到 Typora 主题目录：
+将 `themes/` 目录下的 15 个 `visonic-*.css` 文件复制到 Typora 主题目录：
 
 **Windows**: `C:\Users\<用户名>\AppData\Roaming\Typora\themes\`
 **macOS**: `/Users/<用户名>/Library/Application Support/abnerworks.Typora/themes/`
@@ -85,14 +94,21 @@
 - **Indigo 特别版**：30 个液体光影关键帧动画、虹彩渐变、玻璃拟态引用块、极光代码块灯条、液态金属标题
 - **无障碍与打印友好**：全部主题支持系统"减少动态效果"（`prefers-reduced-motion`）自动关闭动画，打印/导出 PDF 时冻结动画中间帧
 
+### Glass 系列 — 液态玻璃
+- **五层材质体系**：环境光（低频径向渐变留在边缘，中央白净）、半透明填充、高光描边（inset 顶部高光）、背景模糊（`backdrop-filter: blur(24px) saturate(130%)`）、层级柔影
+- **玻璃分级**：标题条 / 引用块 / 代码块 / 表格 / TOC / 提示面板按层级采用不同透明度，不玻璃叠玻璃
+- **完整降级链**：不支持 `backdrop-filter` 时回退实色、`prefers-reduced-transparency` 提高覆盖、`prefers-contrast: more` 加强边界、`prefers-reduced-motion` 关闭动画、打印转浅色实色输出
+- **清透安静**：缓慢低对比的高光扫过动画，主打可读性与扫描效率，无高饱和霓虹光效
+
 ## 目录结构
 
 ```
 Visonic-Themes/
 ├── LICENSE
 ├── README.md
+├── CHANGELOG.md
 ├── 一键安装主题.bat                 # Windows 一键安装脚本
-├── themes/                         # 13 个主题（平铺）
+├── themes/                         # 15 个主题（平铺）
 │   ├── visonic-egoism-fancy.css
 │   ├── visonic-egoism-geek.css
 │   ├── visonic-egoism-hope.css
@@ -105,7 +121,9 @@ Visonic-Themes/
 │   ├── visonic-streamer-matrix.css
 │   ├── visonic-streamer-nebula.css
 │   ├── visonic-streamer-sakura.css
-│   └── visonic-streamer-sunset.css
+│   ├── visonic-streamer-sunset.css
+│   ├── visonic-glass-glacier.css
+│   └── visonic-glass-obsidian.css
 └── visonic-fonts/                  # 字体依赖（Egoism 系列需要）
     ├── github-io/
     ├── pages-dev/

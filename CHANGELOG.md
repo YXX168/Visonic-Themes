@@ -2,6 +2,18 @@
 
 本项目的所有重要变更将记录在此文件中。
 
+## [1.3.0] - 2026-09-12
+
+### 新增
+- **Glass · 液态玻璃系列（2 款全新主题）**，参考 macOS 26 Liquid Glass 的 Web CSS 材质表达：
+  - `visonic-glass-glacier.css`（Glacier 冰川 · 白色系）：晨雾白净，左暖杏 / 右冷蓝低频环境光，主操作蓝 #2868D8
+  - `visonic-glass-obsidian.css`（Obsidian 黑曜 · 黑色系）：黑曜暗夜，深蓝 / 暗紫环境光，代码字符串用暖杏色呼应
+- **五层材质体系**：环境光、半透明填充、高光描边（inset 顶部高光）、背景模糊（`backdrop-filter: blur(24px) saturate(130%)`）、层级柔影；玻璃按标题条 / 引用块 / 代码块 / 表格 / TOC / 提示面板分级，不玻璃叠玻璃，文字始终不透明
+- **完整降级链**：不支持 `backdrop-filter` 时回退实色、`prefers-reduced-transparency` 提高覆盖、`prefers-contrast: more` 加强边界、`prefers-reduced-motion` 关闭动画、打印 / 导出 PDF 转浅色实色输出
+
+### 文档
+- README 主题总数更新为 15 款，新增 Glass 系列介绍与目录结构。
+
 ## [1.2.0] - 2026-09-11
 
 ### 修复
