@@ -1,0 +1,1519 @@
+/*
+ * ╔══════════════════════════════════════════════════════════════╗
+ * ║  Visonic Glass - Obsidian - 黑曜暗夜液态玻璃主题                            ║
+ * ║  版本: 1.0                                                  ║
+ * ║  风格: macOS 26 Liquid Glass / 深蓝暗紫环境光 / 清透安静                      ║
+ * ║  五层材质: 环境 · 填充 · 高光 · 模糊 · 阴影                    ║
+ * ╚══════════════════════════════════════════════════════════════╝
+ *
+ * 安装: 复制到 Typora themes 文件夹，重启选择 "Visonic Glass - Obsidian"
+ * 材质参考: 环境光留在边缘，中央可读；玻璃分级不叠层，文字始终不透明
+ */
+
+/* ==================== 关键帧动画定义 ==================== */
+
+/* 玻璃表面高光斜扫（缓慢、低对比） */
+@keyframes glassSheen {
+  0% { background-position: -150% center; }
+  100% { background-position: 250% center; }
+}
+
+/* H1 玻璃光轴流动 */
+@keyframes h1AxisFlow {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* H2 玻璃灯条柔光呼吸 */
+@keyframes glassBarBreathe {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.95; }
+}
+
+/* 代码块顶部液态光条 */
+@keyframes codeBarFlow {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* 引用块边缘流光 */
+@keyframes borderShine {
+  0%, 100% { border-color: rgba(255, 255, 255, 0.14); }
+  50% { border-color: rgba(255, 255, 255, 0.26); }
+}
+
+/* 链接下划线扫光 */
+@keyframes linkSweep {
+  0% { background-position: -100% center; }
+  100% { background-position: 200% center; }
+}
+
+/* HR 液态流动 */
+@keyframes hrFlow {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* 表格行微光 */
+@keyframes rowSheen {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* 任务勾选涟漪 */
+@keyframes taskRipple {
+  0% { box-shadow: 0 0 0 0 rgba(109, 177, 255, 0.35); }
+  50% { box-shadow: 0 0 0 5px rgba(109, 177, 255, 0.14); }
+  100% { box-shadow: 0 0 0 10px rgba(109, 177, 255, 0); }
+}
+
+/* mark 高亮液态扩展 */
+@keyframes markSpread {
+  0% { background-size: 0% 100%; }
+  100% { background-size: 100% 100%; }
+}
+
+/* ==================== 根变量 ==================== */
+:root {
+  --max-width: 920px;
+
+  /* 环境光 —— 深蓝与暗紫，留在边缘 */
+  --env-warm: rgba(84, 110, 160, 0.22);
+  --env-cool: rgba(122, 92, 180, 0.16);
+
+  /* 玻璃五层材质 —— 填充 / 高光 / 模糊 / 阴影分级 */
+  --glass-blur: 24px;
+  --glass-saturate: 130%;
+  --glass-fill: linear-gradient(145deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.045));
+  --glass-fill-nav: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+  --glass-fill-reading: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-border-strong: rgba(255, 255, 255, 0.26);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  --glass-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+  --glass-shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.30);
+
+  /* 基础背景与文字 */
+  --bg-color: #0b0d12;
+  --text-color: #e6ebf4;
+  --text-color-secondary: #9aa7ba;
+
+  /* 核心色 —— 亮蓝主操作 */
+  --primary-color: #6db1ff;
+  --secondary-color: #4d8de8;
+  --accent-color: #8ab8ff;
+  --border-color: rgba(255, 255, 255, 0.10);
+
+  /* 光效 */
+  --glow-color: rgba(109, 177, 255, 0.35);
+  --glow-shadow-text: 0 0 6px rgba(109, 177, 255, 0.30);
+  --hover-background-color: #6db1ff;
+  --select-text-bg-color: rgba(109, 177, 255, 0.24);
+
+  /* H1 */
+  --h1-color: var(--text-color);
+  --h1-underline-color: var(--primary-color);
+
+  /* 代码高亮 —— 暗色冷调，字符串用暖杏呼应 */
+  --code-keyword: #7fb2ff;
+  --code-variable: #e6ebf4;
+  --code-function: #b39bff;
+  --code-param: #7fdbca;
+  --code-string: #ffd29d;
+  --code-comment: #5a6b80;
+  --code-type: #ffc46b;
+  --code-property: #80cbc4;
+  --code-number: #f78c6c;
+  --code-meta: #7fb2ff;
+  --code-selected-bg: rgba(109, 177, 255, 0.22);
+
+  /* UI */
+  --active-file-bg-color: rgba(255, 255, 255, 0.08);
+  --active-file-text-color: #6db1ff;
+  --item-hover-bg-color: rgba(255, 255, 255, 0.05);
+  --menu-divider-color: rgba(255, 255, 255, 0.08);
+  --rawblock-edit-panel-bd: rgba(255, 255, 255, 0.10);
+  --mermaid-theme: dark;
+
+  /* 元素色 */
+  --element-color: #6db1ff;
+  --element-color-deep: #4d8de8;
+  --element-color-shallow: #8ab8ff;
+  --element-color-so-shallow: rgba(109, 177, 255, 0.08);
+}
+
+/* ==================== 基础 ==================== */
+html {
+  font-size: 16px;
+}
+
+/* 环境层：大范围低频径向渐变，色彩留在边缘 */
+body {
+  background:
+    radial-gradient(70rem 45rem at -8% 6%, var(--env-warm), transparent 55%),
+    radial-gradient(70rem 44rem at 108% 9%, var(--env-cool), transparent 58%),
+    var(--bg-color);
+  background-attachment: fixed;
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+#write {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px 30px 60px;
+  line-height: 2;
+  color: var(--text-color);
+  letter-spacing: 0.4px;
+  word-break: break-word;
+  word-wrap: break-word;
+  text-align: left;
+  position: relative;
+  z-index: 0;
+}
+
+/* ==================== 段落 ==================== */
+#write p {
+  color: var(--text-color);
+  margin: 8px 0;
+  font-size: 1rem;
+  word-spacing: 0.4px;
+  line-height: 2;
+}
+
+/* ==================== 标题通用 ==================== */
+#write h1, #write h2, #write h3,
+#write h4, #write h5, #write h6 {
+  color: var(--text-color);
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ==================== H1 - 玻璃光轴下划线 ==================== */
+#write h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 1.5em auto;
+  position: relative;
+  width: fit-content;
+  min-width: 120px;
+  min-height: 1.4em;
+  padding-bottom: 14px;
+  border-bottom: none;
+  cursor: text;
+  letter-spacing: 2px;
+}
+
+#write h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 72px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--secondary-color),
+    var(--primary-color),
+    var(--secondary-color),
+    transparent
+  );
+  background-size: 200% 100%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px rgba(109, 177, 255, 0.30);
+  transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s ease;
+  animation: h1AxisFlow 5s linear infinite;
+}
+
+#write h1:not(.md-focus):hover {
+  transform: translateY(-2px);
+  text-shadow: 0 0 12px rgba(109, 177, 255, 0.35);
+}
+
+#write h1:hover::after,
+#write h1.md-focus::after {
+  width: 100%;
+  box-shadow: 0 0 16px rgba(109, 177, 255, 0.45);
+}
+
+/* ==================== H2 - 液态玻璃灯条 ==================== */
+#write h2 {
+  font-size: 1.4rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 1.2em 0;
+  padding: 8px 18px 8px 20px;
+  border-radius: 12px;
+  cursor: default;
+  background: var(--glass-fill-nav);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-highlight), var(--glass-shadow-soft);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  position: relative;
+  overflow: hidden;
+}
+
+/* 表面斜向高光扫过（缓慢） */
+#write h2::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.10) 48%,
+    rgba(255, 255, 255, 0.03) 58%,
+    transparent 70%
+  );
+  background-size: 220% 100%;
+  animation: glassSheen 9s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* 左侧液态灯条 */
+#write h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+  box-shadow: 0 0 6px var(--glow-color);
+  animation: glassBarBreathe 5s ease-in-out infinite;
+}
+
+#write h2:hover,
+#write h2.md-focus {
+  border-color: var(--glass-border-strong);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+  transform: translateY(-1px);
+  color: var(--primary-color);
+  text-shadow: var(--glow-shadow-text);
+}
+
+/* ==================== H3 - 玻璃圆点竖条 ==================== */
+#write h3 {
+  position: relative;
+  padding-left: 18px;
+  font-size: 1.25rem;
+  margin: 1.2em 0;
+}
+
+#write h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 18px;
+  border-radius: 5px;
+  background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 6px rgba(109, 177, 255, 0.25);
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  opacity: 0.85;
+}
+
+#write h3:hover,
+#write h3.md-focus {
+  color: var(--primary-color);
+  padding-left: 24px;
+  text-shadow: var(--glow-shadow-text);
+}
+
+#write h3:hover::before,
+#write h3.md-focus::before {
+  height: 70%;
+  opacity: 1;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 10px rgba(109, 177, 255, 0.4);
+}
+
+/* ==================== H4 - 玻璃实心圆点 ==================== */
+#write h4 {
+  margin: 1.2em 0;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+}
+
+#write h4::before {
+  content: "";
+  margin-right: 10px;
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 5px rgba(109, 177, 255, 0.25);
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#write h4:hover,
+#write h4.md-focus {
+  color: var(--primary-color);
+  text-shadow: var(--glow-shadow-text);
+  transform: translateX(5px);
+}
+
+#write h4:hover::before,
+#write h4.md-focus::before {
+  transform: scale(1.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 12px rgba(109, 177, 255, 0.45);
+}
+
+/* ==================== H5 - 玻璃空心环 ==================== */
+#write h5 {
+  margin: 1.2em 0;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+}
+
+#write h5::before {
+  content: "";
+  margin-right: 10px;
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 1.5px solid var(--primary-color);
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#write h5:hover,
+#write h5.md-focus {
+  color: var(--primary-color);
+  text-shadow: var(--glow-shadow-text);
+  transform: translateX(5px);
+}
+
+#write h5:hover::before,
+#write h5.md-focus::before {
+  background: var(--primary-color);
+  box-shadow: 0 0 10px rgba(109, 177, 255, 0.4);
+  transform: scale(1.25);
+}
+
+/* ==================== H6 - 细线横杠 ==================== */
+#write h6 {
+  margin: 1.2em 0;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+#write h6::before {
+  content: "–";
+  color: var(--primary-color);
+  margin-right: 7px;
+  display: inline-block;
+  font-weight: 700;
+  transition: all 0.35s ease;
+}
+
+#write h6:hover,
+#write h6.md-focus {
+  color: var(--primary-color);
+  text-shadow: var(--glow-shadow-text);
+  transform: translateX(5px);
+}
+
+#write h6:hover::before,
+#write h6.md-focus::before {
+  transform: scaleX(1.5);
+  text-shadow: 0 0 8px rgba(109, 177, 255, 0.4);
+}
+
+/* ==================== 强调文本 ==================== */
+#write strong {
+  color: var(--primary-color);
+  font-weight: 700;
+  display: inline;
+  position: relative;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-shadow: 0 0 6px rgba(109, 177, 255, 0.18);
+  transition: all 0.3s ease;
+}
+
+#write strong:hover {
+  text-shadow: 0 0 12px rgba(109, 177, 255, 0.40);
+}
+
+/* ==================== 斜体 em ==================== */
+#write em {
+  font-style: italic;
+  color: var(--accent-color);
+  text-decoration: none !important;
+  padding: 0 2px 1px;
+  background-image: linear-gradient(90deg, rgba(109, 177, 255, 0.40), rgba(179, 155, 255, 0.40));
+  background-size: 100% 2px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: color 0.2s ease;
+}
+
+#write em::after,
+#write em::before {
+  content: none !important;
+  display: none !important;
+}
+
+#write em:hover {
+  color: var(--primary-color);
+  text-shadow: var(--glow-shadow-text);
+}
+
+/* ==================== 删除线 ==================== */
+#write del {
+  text-decoration: line-through;
+  text-decoration-color: rgba(154, 167, 186, 0.6);
+  color: #6b7688;
+  transition: all 0.3s ease;
+}
+
+#write del:hover {
+  color: var(--primary-color);
+  text-decoration-color: var(--primary-color);
+  cursor: not-allowed;
+}
+
+/* ==================== 链接 ==================== */
+#write a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 1px 3px;
+  margin: 0 -1px;
+  border-radius: 6px;
+  background-image: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  background-size: 0 1.5px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: all 0.3s ease;
+}
+
+#write a:not(.md-toc-inner):hover {
+  color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.05);
+  background-size: 100% 1.5px;
+  text-shadow: 0 0 8px rgba(109, 177, 255, 0.45);
+  box-shadow: 0 0 10px rgba(109, 177, 255, 0.15);
+}
+
+#write a:visited {
+  color: #b39bff;
+  opacity: 0.9;
+}
+
+#write a:visited:hover {
+  color: var(--accent-color);
+  opacity: 1;
+}
+
+/* ==================== 列表 ==================== */
+::marker {
+  color: var(--primary-color);
+}
+
+li.md-list-item {
+  margin: 0.4rem 0;
+}
+
+#write ol, #write ul {
+  margin-top: 0;
+  margin-left: 16px;
+  margin-bottom: 8px;
+  padding-left: 13px;
+}
+
+#write ul { list-style-type: disc; }
+#write ul ul { list-style-type: circle; }
+#write ul ul ul { list-style-type: square; }
+#write ol { list-style-type: decimal; }
+#write ol ol { list-style-type: lower-alpha; }
+
+#write li section {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 1.7rem;
+  text-align: justify;
+  color: var(--text-color);
+  font-weight: 400;
+}
+
+/* ==================== 任务列表 ==================== */
+.task-list-item {
+  position: relative;
+}
+
+.task-list-item input {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+  -webkit-appearance: initial;
+  appearance: initial;
+  position: absolute;
+  top: 9px;
+  left: -19px;
+  margin: 0;
+  cursor: pointer;
+  outline: 0;
+  z-index: 1;
+}
+
+.task-list-item input::before {
+  content: ' ';
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 2px 6px rgba(0, 0, 0, 0.30);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+  box-sizing: border-box;
+}
+
+.task-list-item input:checked::before {
+  border: 1px solid var(--primary-color);
+  background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 10px rgba(109, 177, 255, 0.45);
+  animation: taskRipple 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.4) forwards;
+}
+
+.task-list-item input::after {
+  content: ' ';
+  position: absolute;
+  top: 0.325rem;
+  left: 0.28rem;
+  width: 0.6rem;
+  height: 0.4rem;
+  border: 2.5px solid #ffffff;
+  border-top: 0;
+  border-right: 0;
+  transform: rotate(-45deg) scale(0);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+}
+
+.task-list-item input:checked::after {
+  opacity: 1;
+  transform: rotate(-45deg) scale(1);
+}
+
+.task-list-item p {
+  position: relative;
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background-image: linear-gradient(rgba(154, 167, 186, 0.55), rgba(154, 167, 186, 0.55));
+  background-position: 0 50%;
+  background-size: 0 1.5px;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s ease, opacity 0.4s ease;
+  text-decoration: none !important;
+}
+
+.task-list-item input:checked + p {
+  color: #6b7688;
+  opacity: 0.6;
+  background-size: 100% 1.5px;
+}
+
+/* ==================== 引用块 - 液态玻璃卡片 ==================== */
+#write blockquote {
+  position: relative;
+  margin: 20px 0;
+  padding: 16px 20px 16px 46px;
+  color: var(--text-color-secondary);
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  box-shadow: var(--glass-highlight), var(--glass-shadow-soft);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+}
+
+#write blockquote::before {
+  content: "❝";
+  position: absolute;
+  left: 15px;
+  top: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-color);
+  opacity: 0.60;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+#write blockquote p {
+  color: var(--text-color-secondary);
+  margin-bottom: 0.5em;
+}
+
+#write blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+#write blockquote:hover,
+#write blockquote.md-focus {
+  border-color: var(--glass-border-strong);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+  transform: translateY(-2px);
+  animation: borderShine 4s ease-in-out infinite;
+}
+
+#write blockquote:hover::before {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* ==================== 分隔线 - 液态光轴 ==================== */
+#write hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(109, 177, 255, 0.35),
+    var(--secondary-color),
+    var(--primary-color),
+    rgba(179, 155, 255, 0.35),
+    transparent
+  );
+  background-size: 200% 100%;
+  margin: 2.5em 0;
+  position: relative;
+  overflow: visible;
+  border-radius: 2px;
+  opacity: 0.6;
+  transition: all 0.4s ease;
+  animation: hrFlow 6s linear infinite;
+}
+
+#write hr::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-radius: 3px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  box-shadow: 0 0 8px rgba(109, 177, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.4s ease;
+}
+
+#write hr:hover {
+  opacity: 1;
+}
+
+#write hr:hover::after {
+  background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+  box-shadow: 0 0 16px rgba(109, 177, 255, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* ==================== 图片 ==================== */
+#write p:has(img) {
+  text-align: center;
+}
+
+#write img {
+  border-radius: 18px;
+  display: inline-block;
+  margin: 15px 5px;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: 100%;
+  cursor: zoom-in;
+}
+
+#write p > img:only-child {
+  display: block;
+  margin: 20px auto;
+}
+
+#write img:hover {
+  transform: scale(1.02) translateY(-2px);
+  box-shadow: var(--glass-highlight), 0 24px 56px rgba(0, 0, 0, 0.55);
+  z-index: 10;
+}
+
+#write figcaption {
+  display: block;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--text-color-secondary);
+  text-align: center;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+#write figure:hover > figcaption,
+#write p:hover > img + figcaption {
+  color: var(--primary-color);
+}
+
+/* ==================== YAML ==================== */
+pre.md-meta-block {
+  padding: 26px 20px 16px;
+  margin: 20px 0;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  color: var(--text-color-secondary);
+  line-height: 1.6;
+  background: var(--glass-fill-reading);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  box-shadow: var(--glass-highlight), var(--glass-shadow-soft);
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+pre.md-meta-block::after {
+  content: "META";
+  position: absolute;
+  top: 0;
+  right: 18px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #0b0d12;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding: 4px 14px;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 2px 10px rgba(109, 177, 255, 0.35);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+pre.md-meta-block:hover {
+  border-color: var(--glass-border-strong);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+  transform: translateY(-2px);
+}
+
+/* ==================== 行内代码 - 玻璃控件 ==================== */
+#write code:not(.md-fencescode) {
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.9em;
+  letter-spacing: 0.3px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.05));
+  color: var(--primary-color);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 2px 6px rgba(0, 0, 0, 0.25);
+  padding: 2px 8px;
+  margin: 0 2px;
+  border-radius: 8px;
+  vertical-align: middle;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#write code:not(.md-fencescode):hover {
+  background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+  color: #0b0d12;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 16px rgba(109, 177, 255, 0.45);
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+/* ==================== 代码块 - 玻璃面板 ==================== */
+.md-fences:not([lang="mermaid"])::before {
+  content: attr(lang);
+  font-family: "Cascadia Code", Consolas, monospace;
+  text-align: right;
+  padding-right: 15px;
+  padding-left: 15px;
+  color: var(--text-color-secondary);
+  display: block;
+  height: 34px;
+  line-height: 34px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+  border-radius: 14px 14px 0 0;
+  margin-bottom: 0;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* 代码块顶部液态光条 */
+.md-fences:not([lang="mermaid"])::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 14px 14px 0 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--secondary-color) 20%,
+    var(--primary-color) 50%,
+    #b39bff 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: codeBarFlow 5s linear infinite;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.md-fences:hover::after {
+  opacity: 1;
+}
+
+.CodeMirror-wrap .CodeMirror-scroll {
+  overflow-x: auto;
+}
+
+.CodeMirror div.CodeMirror-cursor {
+  border-left: 1px solid var(--primary-color);
+  z-index: 3;
+}
+
+.md-fences {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+  margin: 20px 0;
+  border-radius: 14px;
+  background: #12151d;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-highlight), var(--glass-shadow-soft);
+  -webkit-backdrop-filter: blur(18px) saturate(var(--glass-saturate));
+  backdrop-filter: blur(18px) saturate(var(--glass-saturate));
+  transition: all 0.35s ease;
+}
+
+.md-fences.md-focus {
+  z-index: 100;
+  border-color: var(--glass-border-strong);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+}
+
+.md-fences.md-focus:not([lang="mermaid"])::before {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.05));
+  border-bottom-color: rgba(255, 255, 255, 0.16);
+}
+
+.md-fences .cm-s-inner.CodeMirror {
+  margin-top: 0;
+}
+
+.cm-s-inner.CodeMirror {
+  padding: 16px 12px 12px 20px;
+  color: var(--text-color);
+  font-family: "Cascadia Code", Consolas, monospace;
+  border-radius: 14px;
+  background: transparent;
+  line-height: 1.65rem;
+  font-size: 0.92rem;
+}
+
+.CodeMirror-gutters {
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  background: transparent;
+  white-space: nowrap;
+}
+
+pre.CodeMirror-line {
+  padding: 0 1.2rem;
+}
+
+.CodeMirror-linenumber {
+  padding: 0 3px 0 5px;
+  text-align: right;
+  color: rgba(154, 167, 186, 0.40);
+}
+
+/* ==================== 代码高亮 ==================== */
+.cm-keyword { color: var(--code-keyword) !important; font-weight: 700 !important; }
+.cm-variable { color: var(--code-variable) !important; }
+.cm-tag { color: var(--code-keyword) !important; font-weight: 700 !important; }
+.cm-variable-2 { color: var(--code-property) !important; }
+.cm-variable-3 { color: var(--code-param) !important; }
+.cm-def { color: var(--code-function) !important; }
+.cm-attribute { color: var(--code-function) !important; }
+.cm-comment, .md-comment, .md-meta { color: var(--code-comment) !important; font-style: italic; }
+.cm-string { color: var(--code-string) !important; }
+.cm-link { color: var(--code-property) !important; text-decoration: underline; }
+.cm-type { color: var(--code-type) !important; font-style: italic; }
+.cm-property { color: var(--code-property) !important; }
+.cm-operator { color: var(--code-keyword) !important; }
+.cm-number { color: var(--code-number) !important; }
+.cm-meta { color: var(--code-meta) !important; }
+.cm-builtin { color: var(--code-type) !important; font-style: italic; }
+
+.CodeMirror-selected, .CodeMirror-selectedtext {
+  background: var(--code-selected-bg) !important;
+}
+
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom {
+  color: var(--code-function) !important;
+  font-weight: 700;
+}
+
+/* ==================== 键盘按键 - 玻璃键帽 ==================== */
+#write kbd {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.05));
+  color: var(--text-color);
+  font-family: "Cascadia Code", Consolas, monospace;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-bottom-width: 3px;
+  border-bottom-color: rgba(0, 0, 0, 0.55);
+  border-radius: 8px;
+  display: inline-block;
+  min-width: 1.5em;
+  text-align: center;
+  padding: 3px 8px;
+  margin: 0 3px;
+  font-size: 0.88em;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 2px 5px rgba(0, 0, 0, 0.35);
+}
+
+#write kbd:hover {
+  border-bottom-width: 1px;
+  transform: translateY(2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 0 8px rgba(109, 177, 255, 0.30);
+}
+
+/* ==================== 高亮标记 ==================== */
+#write mark {
+  background-color: transparent !important;
+  color: var(--text-color);
+  padding: 0 3px;
+  margin: 0;
+  border-radius: 4px;
+  font-weight: inherit;
+  position: relative;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background-image: linear-gradient(90deg, rgba(109, 177, 255, 0.35), rgba(179, 155, 255, 0.35));
+  background-repeat: no-repeat;
+  background-position: 0 75%;
+  background-size: 100% 45%;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#write mark::after, #write mark::before {
+  content: none !important;
+  display: none !important;
+}
+
+#write mark:hover {
+  background-position: 0 0;
+  background-size: 100% 100%;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(109, 177, 255, 0.5);
+  box-shadow: 0 0 15px rgba(109, 177, 255, 0.25);
+}
+
+/* ==================== 表格 - 玻璃面板 ==================== */
+#write table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  margin: 20px 0;
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--glass-highlight), var(--glass-shadow-soft);
+  -webkit-backdrop-filter: blur(18px) saturate(var(--glass-saturate));
+  backdrop-filter: blur(18px) saturate(var(--glass-saturate));
+  font-size: 0.92rem;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+#write table:hover {
+  border-color: var(--glass-border-strong);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+}
+
+#write table th {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.05));
+  color: var(--primary-color);
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  white-space: nowrap;
+}
+
+#write table td {
+  padding: 9px 14px;
+  color: var(--text-color-secondary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.25s ease;
+}
+
+#write table td:last-child { border-right: none; }
+#write table tr:last-child td { border-bottom: none; }
+
+#write table tbody tr {
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+#write table tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--primary-color);
+}
+
+#write table tbody tr:hover td:first-child {
+  background-image: linear-gradient(90deg,
+    rgba(109, 177, 255, 0.12),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: rowSheen 1.5s ease forwards;
+}
+
+/* ==================== 脚注 ==================== */
+#write .footnote-word,
+#write .footnote-ref {
+  font-weight: 400;
+  color: var(--primary-color);
+}
+
+#write sup.md-footnote {
+  font-size: 9px;
+  padding: 1px 5px;
+  color: var(--primary-color);
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.30);
+}
+
+#write .footnote-item em {
+  font-size: 14px;
+  color: var(--text-color-secondary);
+  display: block;
+  background: none;
+}
+
+/* ==================== 目录 TOC - 玻璃阅读面 ==================== */
+.md-toc {
+  margin: 20px 0;
+  padding: 24px 28px;
+  background: var(--glass-fill-reading);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  box-shadow: var(--glass-highlight), var(--glass-shadow-soft);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  font-size: 15px;
+  color: var(--text-color-secondary);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+.md-toc:hover {
+  border-color: var(--glass-border-strong);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+  transform: translateY(-2px);
+}
+
+.md-toc::before {
+  content: "目录";
+  display: block;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  letter-spacing: 3px;
+  text-shadow: 0 0 8px rgba(109, 177, 255, 0.30);
+}
+
+.md-toc-item {
+  display: block;
+  line-height: 1.8em;
+  color: var(--text-color-secondary);
+  text-decoration: none;
+  padding: 4px 12px;
+  border-radius: 8px;
+  margin: 2px 0;
+  transition: all 0.25s ease;
+}
+
+.md-toc-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.md-toc-h1 {
+  font-weight: 600;
+  color: var(--text-color);
+  margin-top: 8px;
+}
+
+.md-toc-h2 { margin-left: 1em; font-size: 0.95rem; }
+.md-toc-h3 { margin-left: 2em; font-size: 0.9rem; }
+.md-toc-h4 { margin-left: 3em; font-size: 0.85em; opacity: 0.8; }
+
+.md-toc-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--primary-color);
+  padding-left: 18px;
+}
+
+/* ==================== Callout / Alert - 玻璃提示面板 ==================== */
+.md-alert {
+  padding: 14px 16px;
+  margin: 14px 0;
+  border-radius: 14px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left-width: 3px;
+  box-shadow: var(--glass-highlight), var(--glass-shadow-soft);
+  -webkit-backdrop-filter: blur(18px) saturate(var(--glass-saturate));
+  backdrop-filter: blur(18px) saturate(var(--glass-saturate));
+}
+
+.md-alert:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+}
+
+.md-alert-text-container {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.md-alert-text svg {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* NOTE - 蓝 */
+.md-alert.md-alert-note {
+  background: linear-gradient(145deg, rgba(109, 177, 255, 0.10), rgba(109, 177, 255, 0.05));
+  border-left-color: #6db1ff;
+}
+.md-alert-text-note { color: #6db1ff; background: rgba(109, 177, 255, 0.12); }
+
+/* TIP - 青 */
+.md-alert.md-alert-tip {
+  background: linear-gradient(145deg, rgba(128, 203, 196, 0.10), rgba(128, 203, 196, 0.05));
+  border-left-color: #80cbc4;
+}
+.md-alert-text-tip { color: #80cbc4; background: rgba(128, 203, 196, 0.12); }
+
+/* WARNING - 暖杏 */
+.md-alert.md-alert-warning {
+  background: linear-gradient(145deg, rgba(255, 210, 157, 0.10), rgba(255, 210, 157, 0.05));
+  border-left-color: #ffd29d;
+}
+.md-alert-text-warning { color: #ffd29d; background: rgba(255, 210, 157, 0.12); }
+
+/* IMPORTANT - 红 */
+.md-alert.md-alert-important {
+  background: linear-gradient(145deg, rgba(255, 138, 128, 0.10), rgba(255, 138, 128, 0.05));
+  border-left-color: #ff8a80;
+}
+.md-alert-text-important { color: #ff8a80; background: rgba(255, 138, 128, 0.12); }
+
+/* CAUTION - 深红 */
+.md-alert.md-alert-caution {
+  background: linear-gradient(145deg, rgba(255, 118, 117, 0.10), rgba(255, 118, 117, 0.05));
+  border-left-color: #ff6b6b;
+}
+.md-alert-text-caution { color: #ff6b6b; background: rgba(255, 118, 117, 0.12); }
+
+/* ==================== 侧边栏 - 导航级玻璃 ==================== */
+#typora-sidebar {
+  height: 100%;
+  color: var(--text-color);
+  font-size: 0.92rem;
+  background: var(--glass-fill-nav);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+}
+
+.file-node-content {
+  line-height: 1.5rem;
+}
+
+.file-tree-node.active > .file-node-content {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+span.file-node-title {
+  color: var(--text-color-secondary);
+}
+
+.file-node-icon {
+  color: var(--primary-color);
+  padding-right: 0.2rem;
+}
+
+.file-tree-node.active > .file-node-background {
+  font-weight: bolder;
+  border-left: 3px solid var(--primary-color);
+  background: var(--active-file-bg-color);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+.active-tab-files #info-panel-tab-file .info-panel-tab-border,
+.active-tab-outline #info-panel-tab-outline .info-panel-tab-border,
+.ty-show-search #info-panel-tab-search .info-panel-tab-border {
+  border-radius: 8px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  box-shadow: 0 0 6px rgba(109, 177, 255, 0.40);
+}
+
+.outline-content {
+  font-size: 0.9rem;
+}
+
+.outline-h1 > .outline-item > .outline-label {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* ==================== 滚动条 - 液态玻璃条 ==================== */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(109, 177, 255, 0.25));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+#outline-content::-webkit-scrollbar,
+#file-library::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* ==================== 选中文字 ==================== */
+::selection {
+  background: rgba(109, 177, 255, 0.28);
+  color: #ffffff;
+}
+
+/* ==================== 聚焦行 ==================== */
+#write h1.md-focus, #write h2.md-focus, #write h3.md-focus,
+#write h4.md-focus, #write h5.md-focus, #write h6.md-focus {
+  outline: none;
+}
+
+/* ==================== 数学公式 ==================== */
+.md-math-inline {
+  color: var(--primary-color);
+}
+
+.md-mathjax-preview.md-math-block {
+  margin: 16px 0;
+  padding: 12px;
+  background: var(--glass-fill);
+  border-radius: 14px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-highlight), var(--glass-shadow-soft);
+}
+
+/* ==================== 源码模式 ==================== */
+#typora-source {
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+/* ==================== 底部状态栏 ==================== */
+#footer-word-count-info {
+  color: var(--text-color-secondary);
+}
+
+.ty-side-sort-btn.active {
+  background: var(--active-file-bg-color);
+  color: var(--active-file-text-color);
+}
+
+/* ==================== 渐进增强与无障碍 ==================== */
+
+/* 不支持 backdrop-filter 时使用实色底，页面必须照样成立 */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  #write h2,
+  #write blockquote,
+  .md-fences,
+  #write table,
+  .md-toc,
+  .md-alert,
+  #typora-sidebar {
+    background: #151922;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.40);
+  }
+}
+
+/* 系统开启"减少透明度"时提高覆盖，回到实色 */
+@media (prefers-reduced-transparency: reduce) {
+  #write h2,
+  #write blockquote,
+  .md-fences,
+  #write table,
+  .md-toc,
+  .md-alert,
+  #typora-sidebar,
+  pre.md-meta-block {
+    background: #151922;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* 系统开启"提高对比度"时加强边界 */
+@media (prefers-contrast: more) {
+  #write h2,
+  #write blockquote,
+  .md-fences,
+  #write table,
+  .md-toc,
+  .md-alert {
+    border-color: #8a97ab;
+  }
+}
+
+/* 尊重系统"减少动态效果"设置：关闭所有动画与过渡 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 打印/导出 PDF 时转为浅色实色输出 */
+@media print {
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #202c40;
+    --text-color-secondary: #5b6d85;
+    --primary-color: #1a4fb8;
+    --secondary-color: #2868d8;
+    --accent-color: #1a4fb8;
+    --glass-fill: #ffffff;
+    --glass-fill-nav: #ffffff;
+    --glass-fill-reading: #ffffff;
+    --glass-border: #d5dde8;
+    --glass-border-strong: #b9c6d8;
+    --glass-highlight: none;
+    --glass-shadow: none;
+    --glass-shadow-soft: none;
+    --code-keyword: #1a63d4;
+    --code-variable: #202c40;
+    --code-function: #7a4fd0;
+    --code-param: #0e7490;
+    --code-string: #b45309;
+    --code-comment: #8fa0b5;
+    --code-type: #0f766e;
+    --code-property: #0369a1;
+    --code-number: #c2410c;
+    --code-meta: #64748b;
+  }
+  body {
+    background: #ffffff !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  #write h2,
+  #write blockquote,
+  .md-fences,
+  #write table,
+  .md-toc,
+  .md-alert,
+  .md-fences:not([lang="mermaid"])::before {
+    background: #ffffff;
+    border: 1px solid #d5dde8;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  #write table th {
+    background: #eef3fa;
+    border-bottom: 1px solid #d5dde8;
+  }
+  #write table td {
+    border-bottom: 1px solid #e4eaf2;
+    border-right: 1px solid #eef2f7;
+    color: #202c40;
+  }
+  .md-fences {
+    background: #ffffff !important;
+  }
+  #write code:not(.md-fencescode) {
+    background: #f2f5f9;
+    color: #1a4fb8;
+    border: 1px solid #d5dde8;
+    box-shadow: none;
+  }
+  ::selection {
+    background: rgba(40, 104, 216, 0.15);
+    color: #202c40;
+  }
+}
