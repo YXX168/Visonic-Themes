@@ -1,7 +1,7 @@
 /*
  * ╔══════════════════════════════════════════════════════════════╗
  * ║  Visonic Glass - Obsidian - 黑曜暗夜液态玻璃主题                            ║
- * ║  版本: 1.0                                                  ║
+ * ║  版本: 1.1                                                  ║
  * ║  风格: macOS 26 Liquid Glass / 深蓝暗紫环境光 / 清透安静                      ║
  * ║  五层材质: 环境 · 填充 · 高光 · 模糊 · 阴影                    ║
  * ╚══════════════════════════════════════════════════════════════╝
@@ -292,6 +292,10 @@ body {
   transform: translateY(-1px);
   color: var(--primary-color);
   text-shadow: var(--glow-shadow-text);
+}
+
+#write h2:hover::after {
+  animation-duration: 2.5s;
 }
 
 /* ==================== H3 - 玻璃圆点竖条 ==================== */
@@ -673,7 +677,8 @@ li.md-list-item {
   animation: borderShine 4s ease-in-out infinite;
 }
 
-#write blockquote:hover::before {
+#write blockquote:hover::before,
+#write blockquote.md-focus::before {
   opacity: 1;
   transform: scale(1.15);
 }
@@ -804,6 +809,10 @@ pre.md-meta-block:hover {
   border-color: var(--glass-border-strong);
   box-shadow: var(--glass-highlight), var(--glass-shadow);
   transform: translateY(-2px);
+}
+
+pre.md-meta-block:hover::after {
+  box-shadow: 0 4px 18px rgba(109, 177, 255, 0.50);
 }
 
 /* ==================== 行内代码 - 玻璃控件 ==================== */
@@ -1387,6 +1396,39 @@ span.file-node-title {
   color: var(--active-file-text-color);
 }
 
+/* ==================== 交互细节与键盘可达性 ==================== */
+
+/* 键盘焦点：玻璃光环，Tab 导航可见 */
+#write a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px rgba(109, 177, 255, 0.60);
+}
+
+.task-list-item input:focus-visible::before {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 0 0 3px rgba(109, 177, 255, 0.45);
+}
+
+/* 未勾选任务框悬停提示 */
+.task-list-item input:hover::before {
+  border-color: var(--primary-color);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* 查找替换面板 —— 导航级玻璃 */
+#md-searchpanel {
+  background: var(--glass-fill-nav);
+  border-bottom: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+}
+
+#md-searchpanel input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  color: var(--text-color);
+}
+
 /* ==================== 渐进增强与无障碍 ==================== */
 
 /* 不支持 backdrop-filter 时使用实色底，页面必须照样成立 */
@@ -1457,9 +1499,9 @@ span.file-node-title {
     --glass-fill-reading: #ffffff;
     --glass-border: #d5dde8;
     --glass-border-strong: #b9c6d8;
-    --glass-highlight: none;
-    --glass-shadow: none;
-    --glass-shadow-soft: none;
+    --glass-highlight: 0 0 0 rgba(0, 0, 0, 0);
+    --glass-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    --glass-shadow-soft: 0 0 0 rgba(0, 0, 0, 0);
     --code-keyword: #1a63d4;
     --code-variable: #202c40;
     --code-function: #7a4fd0;
