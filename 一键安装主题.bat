@@ -37,7 +37,7 @@ if not exist "%SCRIPT_DIR%visonic-fonts" (
     exit /b 1
 )
 
-:: 检测 Typora 是否正在运行，如有则安全关闭释放字体文件占用
+REM 检测 Typora 是否正在运行，如有则安全关闭释放字体文件占用
 tasklist /fi "imagename eq Typora.exe" 2>nul | findstr /i "Typora.exe" >nul
 if !errorlevel! equ 0 (
     echo [INFO] Detected Typora is running. Closing Typora to release file locks...
@@ -173,3 +173,4 @@ for /f "tokens=1-3 delims=/.- " %%a in ("%RAW_DATE%") do set "D1=%%a"&set "D2=%%
 for /f "tokens=1-3 delims=:., " %%a in ("%RAW_TIME%") do set "T1=%%a"&set "T2=%%b"&set "T3=%%c"
 set "STAMP=%D1%%D2%%D3%-%T1%%T2%%T3%"
 exit /b 0
+
