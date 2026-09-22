@@ -43,7 +43,9 @@
 
 ## 安装方法
 
-### 一键安装（仅 Windows）
+### 一键安装
+
+#### Windows 用户
 
 1. 下载完整仓库或 Release 压缩包并解压。
 2. 双击运行 `一键安装主题.bat`。
@@ -52,12 +54,19 @@
    - `2`：保留现有主题，仅新增/覆盖 Visonic 主题（推荐）。
 4. 重启 Typora。
 
+#### macOS / Linux 用户
+
+1. 下载仓库或 Release 压缩包并解压。
+2. 打开终端进入解压目录，运行安装脚本：
+```bash
+bash install.sh
+```
+3. 重启 Typora。
+
 脚本会自动复制 `themes/` 下的 15 个主题文件，并同步 `visonic-fonts/` 字体依赖到 Typora 主题目录。
 同时会创建 `github.user.css` 默认主题桥接文件，让 Typora 在默认 GitHub 主题下也自动加载 `visonic-streamer-nebula.css`。如需恢复 Typora 原默认样式，删除主题目录中的 `github.user.css` 即可。
 
 ### 手动安装
-
-> macOS / Linux 用户请使用下方的手动安装方式。
 
 #### 步骤 1：复制字体依赖（Egoism 系列必须）
 
@@ -108,6 +117,7 @@ Visonic-Themes/
 ├── README.md
 ├── CHANGELOG.md
 ├── 一键安装主题.bat                 # Windows 一键安装脚本
+├── install.sh                       # macOS / Linux 一键安装脚本
 ├── themes/                         # 15 个主题（平铺）
 │   ├── visonic-egoism-fancy.css
 │   ├── visonic-egoism-geek.css
