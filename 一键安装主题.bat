@@ -19,6 +19,12 @@ if not exist "%SOURCE_DIR%\visonic-*.css" (
     set "SOURCE_DIR=%SCRIPT_DIR%"
 )
 
+if not exist "%SOURCE_DIR%\visonic-*.css" (
+    echo [ERROR] No Visonic theme CSS files found: %SOURCE_DIR%
+    pause
+    exit /b 1
+)
+
 if not exist "%THEME_DIR%" (
     echo [INFO] Typora theme folder not found. Creating:
     echo        %THEME_DIR%
@@ -80,7 +86,17 @@ if /i "%INSTALL_MODE%"=="CLEAN" (
     set "BACKUP_DIR=%APPDATA%\Typora\themes-visonic-backup-!STAMP!"
     echo [1/5] Backing up current theme folder...
     mkdir "!BACKUP_DIR!" >nul 2>&1
+    if not exist "!BACKUP_DIR!" (
+        echo [ERROR] Cannot create backup folder. Original themes were not cleared.
+        pause
+        exit /b 1
+    )
     xcopy /e /i /y /q "%THEME_DIR%\*" "!BACKUP_DIR!\" >nul 2>&1
+    if errorlevel 2 (
+        echo [ERROR] Backup failed. Original themes were not cleared.
+        pause
+        exit /b 1
+    )
     echo      [OK] Backup saved to: !BACKUP_DIR!
 
     echo.

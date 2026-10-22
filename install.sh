@@ -16,7 +16,7 @@ case "${OS_TYPE}" in
         THEME_DIR="${HOME}/Library/Application Support/abnerworks.Typora/themes"
         ;;
     Linux*)
-        THEME_DIR="${HOME}/.config/Typora/themes"
+        THEME_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}/Typora/themes"
         ;;
     *)
         echo "[ERROR] Unsupported operating system: ${OS_TYPE}"
@@ -24,10 +24,23 @@ case "${OS_TYPE}" in
         exit 1
         ;;
 esac
+THEME_DIR="${1:-${THEME_DIR}}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SOURCE_DIR="${SCRIPT_DIR}/themes"
 [ ! -d "${SOURCE_DIR}" ] && SOURCE_DIR="${SCRIPT_DIR}"
+
+# Validate the distribution before changing the user's theme directory.
+shopt -s nullglob
+THEME_FILES=("${SOURCE_DIR}"/visonic-*.css)
+if [ "${#THEME_FILES[@]}" -eq 0 ]; then
+    echo "[ERROR] No Visonic theme CSS files found: ${SOURCE_DIR}" >&2
+    exit 1
+fi
+if [ ! -d "${SCRIPT_DIR}/visonic-fonts" ]; then
+    echo "[ERROR] Missing visonic-fonts. Use the full Release package or repository." >&2
+    exit 1
+fi
 
 # Ensure Typora theme directory exists
 if [ ! -d "${THEME_DIR}" ]; then
@@ -47,7 +60,7 @@ fi
 echo
 echo "[2/3] Installing theme files..."
 COUNT=0
-for f in "${SOURCE_DIR}"/visonic-*.css; do
+for f in "${THEME_FILES[@]}"; do
     if [ -f "$f" ]; then
         cp -f "$f" "${THEME_DIR}/"
         COUNT=$((COUNT + 1))

@@ -64,6 +64,7 @@ bash install.sh
 3. 重启 Typora。
 
 脚本会自动复制 `themes/` 下的 15 个主题文件，并同步 `visonic-fonts/` 字体依赖到 Typora 主题目录。
+Linux 遵循 `XDG_CONFIG_HOME`（未设置时使用 `~/.config`）。如需指定其他主题目录，可运行 `bash install.sh "/path/to/Typora/themes"`。缺少主题或字体目录的残缺安装包会在写入前中止。
 同时会创建 `github.user.css` 默认主题桥接文件，让 Typora 在默认 GitHub 主题下也自动加载 `visonic-streamer-nebula.css`。如需恢复 Typora 原默认样式，删除主题目录中的 `github.user.css` 即可。
 
 ### 手动安装
@@ -153,6 +154,10 @@ Egoism 系列的特殊字体（如 DingTalk JinBuTi、Smiley Sans 等）通过 `
 
 **Q：主题在亮色 / 暗色模式间如何切换？**
 Egoism 系列每款主题自动跟随 Typora 的昼夜模式适配；Streamer 系列通过不同的主题文件区分（如 Sakura / Sunset 为亮色，Matrix / Nebula 为暗色）。
+
+## 开发验证
+
+运行 `bash -n install.sh` 和 `python3 -m unittest discover -s tests -v`。测试在临时目录验证安装、现有主题保留、默认桥接备份、Linux XDG 配置路径、残缺安装包中止，以及 CSS 本地依赖完整性。GitHub Actions 在 Linux 和 macOS 上执行这些检查；Typora 实际渲染及 Windows 交互安装仍需对应系统验收。
 
 ## 更新日志
 
