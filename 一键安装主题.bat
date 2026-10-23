@@ -19,12 +19,6 @@ if not exist "%SOURCE_DIR%\visonic-*.css" (
     set "SOURCE_DIR=%SCRIPT_DIR%"
 )
 
-if not exist "%SOURCE_DIR%\visonic-*.css" (
-    echo [ERROR] No Visonic theme CSS files found: %SOURCE_DIR%
-    pause
-    exit /b 1
-)
-
 if not exist "%THEME_DIR%" (
     echo [INFO] Typora theme folder not found. Creating:
     echo        %THEME_DIR%
@@ -43,6 +37,13 @@ if not exist "%SCRIPT_DIR%visonic-fonts" (
     exit /b 1
 )
 
+if not exist "%SCRIPT_DIR%custom-fonts" (
+    echo [ERROR] Font folder not found: %SCRIPT_DIR%custom-fonts
+    echo        Please run this script from the full Release package or repository root.
+    pause
+    exit /b 1
+)
+
 REM 检测 Typora 是否正在运行，如有则安全关闭释放字体文件占用
 tasklist /fi "imagename eq Typora.exe" 2>nul | findstr /i "Typora.exe" >nul
 if !errorlevel! equ 0 (
@@ -56,10 +57,10 @@ if !errorlevel! equ 0 (
 echo Select install mode / 请选择安装模式:
 echo.
 echo   [1] Clean install (Backup and replace theme folder)
-echo       清爽全新安装（自动备份已有主题，清空后全新安装 15 款 Visonic 主题）
+echo       清爽全新安装（自动备份已有主题，清空后全新安装 20 款主题：15 款 Visonic + 5 款 Masterpiece 典藏主题）
 echo.
 echo   [2] Keep existing themes and add/update Visonic themes (Recommended)
-echo       保留现有主题（不删除其他主题，新增并覆盖 15 款 Visonic 主题，推荐）
+echo       保留现有主题（不删除其他主题，新增并覆盖 20 款主题：15 款 Visonic + 5 款 Masterpiece 典藏主题，推荐）
 echo.
 choice /c 12 /n /m "Type 1 or 2 [输入 1 或 2]: "
 if errorlevel 2 (
@@ -86,17 +87,7 @@ if /i "%INSTALL_MODE%"=="CLEAN" (
     set "BACKUP_DIR=%APPDATA%\Typora\themes-visonic-backup-!STAMP!"
     echo [1/5] Backing up current theme folder...
     mkdir "!BACKUP_DIR!" >nul 2>&1
-    if not exist "!BACKUP_DIR!" (
-        echo [ERROR] Cannot create backup folder. Original themes were not cleared.
-        pause
-        exit /b 1
-    )
     xcopy /e /i /y /q "%THEME_DIR%\*" "!BACKUP_DIR!\" >nul 2>&1
-    if errorlevel 2 (
-        echo [ERROR] Backup failed. Original themes were not cleared.
-        pause
-        exit /b 1
-    )
     echo      [OK] Backup saved to: !BACKUP_DIR!
 
     echo.
@@ -111,11 +102,18 @@ if /i "%INSTALL_MODE%"=="CLEAN" (
 )
 
 echo.
-echo [3/5] Installing font assets...
+echo [3/5] Installing font assets (visonic-fonts & custom-fonts)...
 if not exist "%THEME_DIR%\visonic-fonts" mkdir "%THEME_DIR%\visonic-fonts" >nul 2>&1
 xcopy /e /i /y /q "%SCRIPT_DIR%visonic-fonts\*" "%THEME_DIR%\visonic-fonts\" >nul
 if errorlevel 1 (
-    echo [ERROR] Failed to copy font assets.
+    echo [ERROR] Failed to copy visonic-fonts assets.
+    pause
+    exit /b 1
+)
+if not exist "%THEME_DIR%\custom-fonts" mkdir "%THEME_DIR%\custom-fonts" >nul 2>&1
+xcopy /e /i /y /q "%SCRIPT_DIR%custom-fonts\*" "%THEME_DIR%\custom-fonts\" >nul
+if errorlevel 1 (
+    echo [ERROR] Failed to copy custom-fonts assets.
     pause
     exit /b 1
 )
@@ -124,7 +122,7 @@ echo      [OK] Font assets installed
 echo.
 echo [4/5] Installing theme files...
 set /a count=0
-for %%f in ("%SOURCE_DIR%\visonic-*.css") do (
+for %%f in ("%SOURCE_DIR%\*.css") do (
     copy /y "%%f" "%THEME_DIR%\" >nul
     if not errorlevel 1 set /a count+=1
 )
@@ -155,11 +153,11 @@ if exist "%THEME_DIR%\%DEFAULT_THEME%.css" (
 echo.
 echo Verifying...
 set /a ok=0
-for %%f in ("%THEME_DIR%\visonic-*.css") do set /a ok+=1
+for %%f in ("%THEME_DIR%\*.css") do set /a ok+=1
 if !ok! geq !count! (
-    echo      [OK] Verification passed. Detected !ok! Visonic theme files.
+    echo      [OK] Verification passed. Detected !ok! theme files.
 ) else (
-    echo      [WARN] Detected only !ok! Visonic theme files. Expected at least !count!.
+    echo      [WARN] Detected only !ok! theme files. Expected at least !count!.
 )
 
 echo.

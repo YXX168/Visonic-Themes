@@ -2832,3 +2832,37 @@ body.dark,
  * ║                                                                      ║
  * ╚══════════════════════════════════════════════════════════════════════╝
  */
+
+
+/* --- Typora 1.14.10 Streamer Polish --- */
+#top-titlebar, header {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.outline-item:hover {
+  border-radius: 6px;
+  background-color: rgba(167, 139, 250, 0.12);
+}
+.outline-item.active {
+  border-radius: 6px;
+  font-weight: 600;
+  border-left: 3px solid var(--primary-color, #8b5cf6);
+  background-color: rgba(167, 139, 250, 0.18);
+}
+.md-diagram-panel {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  padding: 14px;
+  margin: 18px 0;
+}
+.md-math-block {
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+.dropdown-menu {
+  border-radius: 8px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+}

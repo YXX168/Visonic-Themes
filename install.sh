@@ -32,13 +32,17 @@ SOURCE_DIR="${SCRIPT_DIR}/themes"
 
 # Validate the distribution before changing the user's theme directory.
 shopt -s nullglob
-THEME_FILES=("${SOURCE_DIR}"/visonic-*.css)
+THEME_FILES=("${SOURCE_DIR}"/*.css)
 if [ "${#THEME_FILES[@]}" -eq 0 ]; then
-    echo "[ERROR] No Visonic theme CSS files found: ${SOURCE_DIR}" >&2
+    echo "[ERROR] No theme CSS files found: ${SOURCE_DIR}" >&2
     exit 1
 fi
 if [ ! -d "${SCRIPT_DIR}/visonic-fonts" ]; then
     echo "[ERROR] Missing visonic-fonts. Use the full Release package or repository." >&2
+    exit 1
+fi
+if [ ! -d "${SCRIPT_DIR}/custom-fonts" ]; then
+    echo "[ERROR] Missing custom-fonts. Use the full Release package or repository." >&2
     exit 1
 fi
 
@@ -48,14 +52,13 @@ if [ ! -d "${THEME_DIR}" ]; then
     mkdir -p "${THEME_DIR}"
 fi
 
-echo "[1/3] Installing font assets (visonic-fonts)..."
-if [ -d "${SCRIPT_DIR}/visonic-fonts" ]; then
-    mkdir -p "${THEME_DIR}/visonic-fonts"
-    cp -R "${SCRIPT_DIR}/visonic-fonts/"* "${THEME_DIR}/visonic-fonts/"
-    echo "      [OK] Font assets installed"
-else
-    echo "      [WARN] visonic-fonts folder not found. Egoism themes might require font assets."
-fi
+echo "[1/3] Installing font assets (visonic-fonts & custom-fonts)..."
+mkdir -p "${THEME_DIR}/visonic-fonts"
+cp -R "${SCRIPT_DIR}/visonic-fonts/"* "${THEME_DIR}/visonic-fonts/"
+echo "      [OK] Installed visonic-fonts"
+mkdir -p "${THEME_DIR}/custom-fonts"
+cp -R "${SCRIPT_DIR}/custom-fonts/"* "${THEME_DIR}/custom-fonts/"
+echo "      [OK] Installed custom-fonts"
 
 echo
 echo "[2/3] Installing theme files..."
@@ -66,7 +69,7 @@ for f in "${THEME_FILES[@]}"; do
         COUNT=$((COUNT + 1))
     fi
 done
-echo "      [OK] Installed ${COUNT} Visonic theme files to ${THEME_DIR}"
+echo "      [OK] Installed ${COUNT} theme files to ${THEME_DIR}"
 
 echo
 echo "[3/3] Setting default theme bridge (github.user.css)..."

@@ -1,0 +1,352 @@
+/*
+ * OBSIDIAN GOLD // 黑曜帝廷 · 典藏黑金与古法金箔
+ * Typora Masterpiece Edition
+ */
+
+@font-face {
+  font-family: "Cinzel Decorative";
+  src: url("custom-fonts/CinzelDecorative-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("custom-fonts/CormorantGaramond-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("custom-fonts/CormorantGaramond-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("custom-fonts/JetBrainsMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --bg-color: #0b0b0e;
+  --side-bar-bg-color: #070709;
+  --text-color: #ede6d6;
+  --select-text-bg-color: rgba(230, 200, 117, 0.35);
+  --item-hover-bg-color: rgba(230, 200, 117, 0.1);
+  --item-hover-text-color: #e6c875;
+  --active-file-bg-color: rgba(230, 200, 117, 0.15);
+  --active-file-border-color: #e6c875;
+  --active-file-text-color: #ffffff;
+  --primary-color: #e6c875;
+}
+
+html, body {
+  background-color: #0b0b0e !important;
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, rgba(230, 200, 117, 0.15) 0%, transparent 65%),
+    radial-gradient(circle at 10% 90%, rgba(184, 134, 11, 0.1) 0%, transparent 40%) !important;
+  background-attachment: fixed !important;
+  color: var(--text-color);
+  font-family: "Cormorant Garamond", "Songti SC", "STSong", "Georgia", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.025em;
+  -webkit-font-smoothing: antialiased;
+}
+
+content {
+  background: transparent !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+#write {
+  background: transparent !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding: 40px 60px 120px !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(230, 200, 117, 0.25);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(230, 200, 117, 0.55);
+}
+
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6 {
+  font-family: "Cinzel Decorative", "Songti SC", serif;
+  color: #e6c875;
+  position: relative;
+  letter-spacing: 0.06em;
+}
+
+#write h1 {
+  font-size: 2.25rem;
+  text-align: center;
+  margin: 2.5em 0 1.5em;
+  padding: 28px 36px;
+  background: linear-gradient(180deg, rgba(230, 200, 117, 0.1) 0%, rgba(15, 15, 18, 0.9) 100%);
+  border: 1px solid rgba(230, 200, 117, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), inset 0 0 24px rgba(230, 200, 117, 0.1);
+  color: #ffffff;
+}
+
+#write h1::before {
+  content: "✦ IMPERIAL MAJESTY // CHRONICLES ✦";
+  display: block;
+  font-family: "Cinzel Decorative", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  color: #e6c875 !important;
+  opacity: 0.95;
+  margin-bottom: 12px;
+  text-shadow: 0 0 12px rgba(230, 200, 117, 0.6);
+}
+
+#write h1 span {
+  background: linear-gradient(135deg, #fff5d6 0%, #e6c875 35%, #b38728 70%, #fbf5b7 85%, #aa771c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 18px rgba(230, 200, 117, 0.35));
+}
+
+#write h2 {
+  font-size: 1.55rem;
+  margin: 2.2em 0 1em;
+  padding: 8px 16px;
+  background: linear-gradient(90deg, rgba(230, 200, 117, 0.14) 0%, transparent 100%);
+  border-left: 3px solid #e6c875;
+  color: #fff1c4;
+  display: flex;
+  align-items: center;
+}
+
+#write h2::before {
+  content: "✦";
+  color: #e6c875;
+  margin-right: 12px;
+  font-size: 1rem;
+}
+
+#write h3 {
+  font-size: 1.25rem;
+  margin: 1.6em 0 0.8em;
+  color: #e6c875;
+  display: flex;
+  align-items: center;
+}
+
+#write h3::before {
+  content: "❖";
+  color: #b38728;
+  margin-right: 8px;
+  font-size: 0.9rem;
+}
+
+#write blockquote {
+  position: relative;
+  margin: 2em 0;
+  padding: 24px 30px;
+  background: linear-gradient(135deg, rgba(230, 200, 117, 0.07) 0%, rgba(15, 15, 18, 0.95) 100%);
+  border: 1px solid rgba(230, 200, 117, 0.45);
+  outline: 1px solid rgba(230, 200, 117, 0.2);
+  outline-offset: -5px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+  color: #e8dec8;
+  font-style: italic;
+}
+
+#write blockquote::before {
+  content: "“";
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-size: 3rem;
+  font-family: "Cormorant Garamond", serif;
+  color: rgba(230, 200, 117, 0.4);
+  line-height: 1;
+}
+
+#write pre.md-fences {
+  position: relative;
+  margin: 2.2em 0;
+  padding: 44px 22px 20px 22px;
+  background: #09090c;
+  border: 1px solid rgba(230, 200, 117, 0.35);
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(230, 200, 117, 0.12);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+#write pre.md-fences::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #e6c875;
+  box-shadow: 19px 0 0 #b38728, 38px 0 0 #5c4314;
+}
+
+#write pre.md-fences[lang]::after {
+  content: attr(lang);
+  position: absolute;
+  top: 11px;
+  right: 20px;
+  font-family: "Cinzel Decorative", serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #e6c875;
+  background: rgba(230, 200, 117, 0.18);
+  border: 1px solid rgba(230, 200, 117, 0.4);
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+.cm-s-inner .cm-keyword { color: #e6c875 !important; font-weight: bold; }
+.cm-s-inner .cm-atom { color: #fbf5b7 !important; }
+.cm-s-inner .cm-number { color: #e0b04c !important; }
+.cm-s-inner .cm-def { color: #ffffff !important; }
+.cm-s-inner .cm-variable { color: #ede6d6 !important; }
+.cm-s-inner .cm-property { color: #e6c875 !important; }
+.cm-s-inner .cm-operator { color: #d4af37 !important; }
+.cm-s-inner .cm-comment { color: #736b5a !important; font-style: italic; }
+.cm-s-inner .cm-string { color: #9fd89f !important; }
+
+#write code, #write tt {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.88em;
+  color: #f5e4b3;
+  background: rgba(230, 200, 117, 0.12);
+  border: 1px solid rgba(230, 200, 117, 0.35);
+  border-radius: 4px;
+  padding: 2px 7px;
+  margin: 0 4px;
+}
+
+#write table {
+  width: 100%;
+  margin: 2.2em 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid rgba(230, 200, 117, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(13, 13, 16, 0.9);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+#write table th {
+  background: linear-gradient(180deg, #1f1d16 0%, #14130f 100%);
+  color: #e6c875;
+  font-family: "Cinzel Decorative", "Songti SC", serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  padding: 14px 18px;
+  border-bottom: 2px solid #e6c875;
+}
+
+#write table td {
+  padding: 13px 18px;
+  border-bottom: 1px solid rgba(230, 200, 117, 0.15);
+  color: #dfd8c7;
+}
+
+#write table tr:last-child td {
+  border-bottom: none;
+}
+
+#write table tr:hover td {
+  background: rgba(230, 200, 117, 0.1);
+  color: #ffffff;
+}
+
+#write a {
+  color: #e6c875;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(230, 200, 117, 0.5);
+  transition: all 0.25s ease;
+}
+
+#write a:hover {
+  color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+  text-shadow: 0 0 12px rgba(230, 200, 117, 0.8);
+}
+
+#write hr {
+  height: 1px;
+  border: none;
+  background: linear-gradient(90deg, transparent 0%, #e6c875 50%, transparent 100%);
+  margin: 3.5em 0;
+  position: relative;
+}
+
+#write hr::after {
+  content: "✦ ❖ ✦";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #e6c875;
+  background: var(--bg-color);
+  padding: 0 14px;
+  font-size: 0.82rem;
+  letter-spacing: 0.3em;
+}
+
+/* Custom Task List Checkboxes */
+.task-list-item input:before,
+.md-task-list-item input:before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 17px !important;
+  height: 17px !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+  border: 1.5px solid #e6c875 !important;
+  border-radius: 3px !important;
+  background-color: rgba(230, 200, 117, 0.1) !important;
+  margin-top: -0.25rem !important;
+  margin-left: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.task-list-item input:checked:before,
+.task-list-item input[checked]:before,
+.html-for-mac .task-list-item input:checked:before {
+  content: "✓" !important;
+  font-size: 11px !important;
+  line-height: 14px !important;
+  font-weight: 900 !important;
+  color: #0b0b0e !important;
+  background-color: #e6c875 !important;
+  border-color: #e6c875 !important;
+  box-shadow: 0 0 10px rgba(230, 200, 117, 0.6) !important;
+}

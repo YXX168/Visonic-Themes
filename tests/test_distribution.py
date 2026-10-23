@@ -29,8 +29,15 @@ class DistributionTests(unittest.TestCase):
         self.assertEqual((target / 'other.css').read_text(), 'user theme')
         self.assertEqual((target / 'github.user.css.bak').read_text(), 'user bridge')
         self.assertIn('visonic-streamer-nebula.css', (target / 'github.user.css').read_text())
-        documented = set(re.findall(r'`(visonic-[\w-]+\.css)`', (ROOT / 'README.md').read_text()))
-        self.assertEqual({p.name for p in target.glob('visonic-*.css')}, documented)
+        documented = set(re.findall(r'`([\w-]+\.css)`', (ROOT / 'README.md').read_text()))
+        installed_themes = {p.name for p in target.glob('*.css') if p.name not in ('other.css', 'github.user.css', 'github.user.css.bak')}
+        self.assertEqual(installed_themes, documented)
+        self.assertEqual(len(installed_themes), 20)
+        # Verify custom-fonts
+        for font_file in ROOT.glob('custom-fonts/*'):
+            installed_font = target / 'custom-fonts' / font_file.name
+            self.assertTrue(installed_font.is_file(), f'Missing font file: {installed_font}')
+            self.assertEqual(installed_font.read_bytes(), font_file.read_bytes())
         for source in [*ROOT.glob('themes/*.css'), *ROOT.glob('visonic-fonts/**/*.css')]:
             installed = target / source.relative_to(ROOT / 'themes' if source.parent.name == 'themes' else ROOT)
             self.assertEqual(installed.read_bytes(), source.read_bytes())
@@ -62,10 +69,24 @@ class DistributionTests(unittest.TestCase):
         shutil.copy2(ROOT / 'install.sh', self.base / 'install.sh')
         (self.base / 'themes').mkdir()
         (self.base / 'visonic-fonts').mkdir()
+        (self.base / 'custom-fonts').mkdir()
         target = self.base / 'must not exist'
         result = subprocess.run(['bash', str(self.base / 'install.sh'), str(target)], capture_output=True, text=True, timeout=30)
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn('No Visonic theme CSS files', result.stderr)
+        self.assertIn('No theme CSS files', result.stderr)
+        self.assertFalse(target.exists())
+
+
+    @unittest.skipIf(os.name == 'nt', 'Bash installer is for macOS/Linux')
+    def test_missing_custom_fonts_fails(self):
+        shutil.copy2(ROOT / 'install.sh', self.base / 'install.sh')
+        (self.base / 'themes').mkdir()
+        (self.base / 'themes' / 'test.css').write_text('/* test */')
+        (self.base / 'visonic-fonts').mkdir()
+        target = self.base / 'must not exist'
+        result = subprocess.run(['bash', str(self.base / 'install.sh'), str(target)], capture_output=True, text=True, timeout=30)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('Missing custom-fonts', result.stderr)
         self.assertFalse(target.exists())
 
 
