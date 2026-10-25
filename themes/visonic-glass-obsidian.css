@@ -1559,3 +1559,203 @@ span.file-node-title {
     color: #202c40;
   }
 }
+
+/* ==================== Typora 1.14.10+ Unibody & Modern UI 集成打磨 ==================== */
+
+/* --- 1. 全局中英文字体分级与暗色文字锐度微调 --- */
+body, #write {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+/* --- 2. Unibody 标题栏与顶部暗夜深层磨砂 --- */
+#top-titlebar,
+header {
+  background: var(--glass-fill-nav) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+#top-titlebar .title-text {
+  color: var(--text-color);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+#top-titlebar .toolbar-icon.btn {
+  color: var(--text-color);
+  opacity: 0.75;
+  transition: all 0.2s ease;
+}
+
+#top-titlebar .toolbar-icon.btn:hover {
+  background-color: rgba(109, 177, 255, 0.15);
+  color: var(--primary-color);
+  opacity: 1;
+}
+
+#top-titlebar #w-close:hover {
+  background-color: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+/* --- 3. 侧边栏整体、文件树与大纲树深层磨砂打磨 --- */
+#typora-sidebar {
+  border-right: 1px solid var(--border-color);
+}
+
+.sidebar-content {
+  background: transparent !important;
+}
+
+.file-list-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.file-list-item:hover {
+  background-color: var(--item-hover-bg-color);
+}
+
+.file-list-item.active {
+  background-color: var(--active-file-bg-color);
+  border-left: 3px solid var(--primary-color);
+}
+
+.outline-item {
+  border-radius: 6px;
+  margin: 1px 0;
+  transition: all 0.2s ease;
+}
+
+.outline-item:hover {
+  background-color: var(--item-hover-bg-color);
+  color: var(--primary-color);
+}
+
+.outline-item.active {
+  background-color: var(--active-file-bg-color);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.outline-label {
+  transition: color 0.2s ease;
+}
+
+/* --- 4. 搜索栏、替换栏与浮动面板液态玻璃增强 --- */
+#md-searchpanel {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+#md-searchpanel .btn:hover {
+  background: rgba(109, 177, 255, 0.15);
+  color: var(--primary-color);
+}
+
+/* --- 5. 上下文菜单与快捷下拉菜单 --- */
+.dropdown-menu,
+.context-menu {
+  background: rgba(17, 21, 29, 0.92) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55) !important;
+  padding: 6px !important;
+}
+
+.dropdown-menu > li > a,
+.context-menu > li > a {
+  color: var(--text-color) !important;
+  border-radius: 6px;
+  padding: 6px 14px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-menu > li > a:hover,
+.context-menu > li > a:hover,
+.dropdown-menu > .active > a {
+  background: rgba(109, 177, 255, 0.15) !important;
+  color: var(--primary-color) !important;
+}
+
+.dropdown-menu .divider {
+  background-color: var(--border-color);
+  margin: 4px 0;
+}
+
+/* --- 6. 模态弹窗与偏好设置 (Modal & Dialog) --- */
+.modal-content {
+  background: rgba(17, 21, 29, 0.94) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
+  backdrop-filter: blur(24px) saturate(130%);
+  border: 1px solid var(--glass-border-strong) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65) !important;
+}
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.modal-header, .modal-footer {
+  border-color: var(--border-color) !important;
+}
+
+/* --- 7. Mermaid 图表 & MathJax 渲染优化 --- */
+.md-diagram-panel {
+  background: var(--glass-fill) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 14px !important;
+  padding: 16px !important;
+  box-shadow: var(--glass-highlight), var(--glass-shadow-soft) !important;
+  margin: 1.5em 0 !important;
+}
+
+.md-fences[lang="mermaid"] {
+  background: var(--glass-fill-reading) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+
+.md-math-block {
+  background: var(--glass-fill) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--glass-highlight), var(--glass-shadow-soft) !important;
+}
+
+mjx-container[jax="SVG"] {
+  color: var(--text-color) !important;
+}
+
+/* --- 8. 底部状态栏微磨砂增强 --- */
+footer.ty-footer {
+  background: var(--glass-fill-nav) !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border-color) !important;
+  color: var(--text-color-secondary) !important;
+}
+
+#footer-word-count:hover,
+#outline-btn:hover {
+  color: var(--primary-color) !important;
+}
+
+
+/* Extra breathing room for YAML front matter badge */
+pre.md-meta-block {
+  padding-top: 48px !important;
+  line-height: 1.8 !important;
+}
+pre.md-meta-block::after {
+  top: 10px !important;
+  right: 20px !important;
+}

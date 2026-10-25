@@ -1,13 +1,26 @@
 # Visonic Themes for Typora
 
-> Visonic 主题系列 — 一套为 Typora 打造的霓虹动画主题全家桶，**15 款主题**覆盖全天候使用场景。
+> Visonic 主题系列 — 一套为 Typora 打造的霓虹动画与艺术排版主题全家桶，**21 款主题**（15 款经典 Visonic 主题 + 6 款 Masterpiece 典藏主题）覆盖全天候写作与代码记录场景。
 
 ![Release](https://img.shields.io/github/v/release/YXX168/Visonic-Themes?label=%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC)
 ![License](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-green)
-![Themes](https://img.shields.io/badge/%E4%B8%BB%E9%A2%98-15%20%E6%AC%BE-8b5cf6)
+![Themes](https://img.shields.io/badge/%E4%B8%BB%E9%A2%98-21%20%E6%AC%BE-8b5cf6)
 ![Platform](https://img.shields.io/badge/%E5%B9%B3%E5%8F%B0-Windows%20%7C%20macOS%20%7C%20Linux-blue)
 
 ## 系列总览
+
+### Masterpiece · 典藏大师系列（6 款全新）
+
+> 融合现代前沿视觉风格与高品质西文排版字体，专为沉浸式专业创作设计，配属 `custom-fonts/` 本地专属字体集。
+
+| 主题名称 | CSS 文件 | 风格理念 | 配套专属字体 | 核心视觉特色 |
+|----------|----------|----------|--------------|--------------|
+| Cyberpunk Neon | `cyberpunk-neon.css` | 赛博极客 · 荒坂机能霓虹 | Audiowide / Orbitron / JetBrains Mono | 未来科技感、高对比黑黄与霓虹青荧光配色、HUD 刻度与机能切角 |
+| Kyoto Paper | `kyoto-paper.css` | 京都纸镜 · 和风禅茶与云烟素砚 | Cormorant Garamond / JetBrains Mono | 日式和纸温润质感、茶墨内敛风、静谧典雅排版与纸张肌理沉浸感 |
+| Obsidian Gold | `obsidian-gold.css` | 黑曜帝廷 · 典藏黑金与古法金箔 | Cinzel Decorative / Cormorant Garamond | 奢华暗黑鎏金质感、金箔描边光晕、古典衬线与黑曜岩层次 |
+| Spatial Aurora | `spatial-aurora.css` | 空间极光 · VisionOS 琉璃 | Syne / Space Grotesk / JetBrains Mono | 空间计算琉璃拟态、高斯模糊悬浮层级与动态极光柔光渐变 |
+| Synthwave Retro | `synthwave-retro.css` | 合成浪潮 · 1984 迈阿密日落霓虹 | Righteous / Audiowide / JetBrains Mono | 复古蒸汽波、1984 迈阿密日落紫粉金渐变、网格光栅与复古打字机感 |
+| Pure Cobalt | `pure-cobalt.css` | 纯粹钴蓝 · 极简未来工作台 | JetBrains Mono / SF Pro | 纯净极简白底、标志性皇家钴蓝点缀、微蓝调悬浮卡片、居中胶囊徽标与高质感暗黑代码块 |
 
 ### Egoism · 液态光影（6 款）
 
@@ -51,7 +64,7 @@
 2. 双击运行 `一键安装主题.bat`。
 3. 根据提示选择安装方式：
    - `1`：清空并替换 Typora 主题目录（脚本会先自动备份原主题目录）。
-   - `2`：保留现有主题，仅新增/覆盖 Visonic 主题（推荐）。
+   - `2`：保留现有主题，仅新增/覆盖 Visonic 主题与 Masterpiece 主题（推荐）。
 4. 重启 Typora。
 
 #### macOS / Linux 用户
@@ -63,34 +76,46 @@ bash install.sh
 ```
 3. 重启 Typora。
 
-脚本会自动复制 `themes/` 下的 15 个主题文件，并同步 `visonic-fonts/` 字体依赖到 Typora 主题目录。
+脚本会自动复制 `themes/` 下的全量 21 款主题文件，并同步 `visonic-fonts/` 与 `custom-fonts/` 专属字体集到 Typora 主题目录。
+Linux 遵循 `XDG_CONFIG_HOME`（未设置时使用 `~/.config`）。如需指定其他主题目录，可运行 `bash install.sh "/path/to/Typora/themes"`。缺少主题或字体目录的残缺安装包会在写入前中止。
 同时会创建 `github.user.css` 默认主题桥接文件，让 Typora 在默认 GitHub 主题下也自动加载 `visonic-streamer-nebula.css`。如需恢复 Typora 原默认样式，删除主题目录中的 `github.user.css` 即可。
 
 ### 手动安装
 
-#### 步骤 1：复制字体依赖（Egoism 系列必须）
+#### 步骤 1：复制字体依赖（Egoism 系列与 Masterpiece 系列必须）
 
-将 `visonic-fonts/` 文件夹复制到 Typora 主题目录下：
+将 `visonic-fonts/` 与 `custom-fonts/` 两个文件夹完整复制到 Typora 主题目录下：
 
-**Windows**: `C:\Users\<用户名>\AppData\Roaming\Typora\themes\visonic-fonts\`
-**macOS**: `/Users/<用户名>/Library/Application Support/abnerworks.Typora/themes/visonic-fonts/`
-**Linux**: `~/.config/Typora/themes/visonic-fonts/`
+- **Windows**: `C:\Users\<用户名>\AppData\Roaming\Typora\themes\visonic-fonts\` 与 `...\themes\custom-fonts\`
+- **macOS**: `/Users/<用户名>/Library/Application Support/abnerworks.Typora/themes/visonic-fonts/` 与 `.../themes/custom-fonts/`
+- **Linux**: `~/.config/Typora/themes/visonic-fonts/` 与 `~/.config/Typora/themes/custom-fonts/`
 
 #### 步骤 2：安装主题
 
-将 `themes/` 目录下的 15 个 `visonic-*.css` 文件复制到 Typora 主题目录：
+将 `themes/` 目录下的 21 个 `*.css` 文件（15 款 Visonic 主题 + 6 款 Masterpiece 典藏主题）复制到 Typora 主题目录：
 
-**Windows**: `C:\Users\<用户名>\AppData\Roaming\Typora\themes\`
-**macOS**: `/Users/<用户名>/Library/Application Support/abnerworks.Typora/themes/`
-**Linux**: `~/.config/Typora/themes/`
+- **Windows**: `C:\Users\<用户名>\AppData\Roaming\Typora\themes\`
+- **macOS**: `/Users/<用户名>/Library/Application Support/abnerworks.Typora/themes/`
+- **Linux**: `~/.config/Typora/themes/`
 
 #### 步骤 3：重启 Typora
 
 重启后在 `主题` 菜单中选择对应主题即可。
 
-> **提示**: `visonic-egoism-*.css` 需要 `visonic-fonts` 字体依赖才能正常渲染。`visonic-streamer-*.css` 为独立主题，无需额外依赖。
+> **提示**:
+> - `visonic-egoism-*.css` 需要 `visonic-fonts` 字体依赖才能正常渲染。
+> - 6 款 Masterpiece 典藏主题依赖 `custom-fonts` 字体目录中的本地高清字体。
+> - `visonic-streamer-*.css` 与 `visonic-glass-*.css` 为独立主题，无需额外依赖。
 
 ## 特性
+
+### Typora 1.14.10+ 打磨与现代体验
+- **Unibody 顶栏与背景毛玻璃平滑融合**：针对 Typora 1.14.10+ 无边框模式与 macOS / Windows 系统级标题栏进行了深度像素级调优，消除传统主题标题栏与正文区域的色彩断层与多余硬边框，实现浑然一体的视网膜沉浸视野。
+- **VLOOK Liquid Pro 防眩晕舒缓光影动画**：全面重构流光与渐变帧率曲线，降低刺眼的高饱和频闪，引入高斯光晕散射与微呼吸阻尼动效，既保留灵动的光影质感，又大幅减轻长时间高强度阅读与写作时的视疲劳。
+
+### Masterpiece 系列 — 典藏质感
+- **六大顶级美学流派**：未来赛博机能（`cyberpunk-neon.css`）、日式枯山水禅茶和纸（`kyoto-paper.css`）、皇家古法黑曜金箔（`obsidian-gold.css`）、苹果空间计算琉璃（`spatial-aurora.css`）、1984 迈阿密蒸汽波（`synthwave-retro.css`）、纯粹极简未来工作台（`pure-cobalt.css`）。
+- **专属本地字体集（custom-fonts）**：集成 11 款精选现代西文及专业代码字体（JetBrains Mono, Cormorant Garamond, Audiowide, Orbitron, Righteous, Cinzel Decorative, Syne, Space Grotesk, Share Tech Mono），纯本地文件直读，无需联网亦无需在操作系统中全局安装字体即可完美呈现。
 
 ### Egoism 系列 — 液态光影
 - **21+ 动画效果**：全局流动背景、四角流光、标题下划线光折射、代码块旋转光边框、代码光泽掠过、链接光轨、引用框扫描线、分割线流光、图片光边框、列表脉冲标记、TOC 滑动光边、页面顶部流光条、液态滚动条、选区光效、元数据呼吸、光粒子漂浮等
@@ -118,7 +143,13 @@ Visonic-Themes/
 ├── CHANGELOG.md
 ├── 一键安装主题.bat                 # Windows 一键安装脚本
 ├── install.sh                       # macOS / Linux 一键安装脚本
-├── themes/                         # 15 个主题（平铺）
+├── themes/                         # 21 个主题（平铺）
+│   ├── cyberpunk-neon.css           # 赛博极客 · 荒坂机能霓虹
+│   ├── kyoto-paper.css              # 京都纸镜 · 和风禅茶与云烟素砚
+│   ├── obsidian-gold.css            # 黑曜帝廷 · 典藏黑金与古法金箔
+│   ├── spatial-aurora.css           # 空间极光 · VisionOS 琉璃
+│   ├── synthwave-retro.css          # 合成浪潮 · 1984 迈阿密日落霓虹
+│   ├── pure-cobalt.css              # 纯粹钴蓝 · 极简未来工作台
 │   ├── visonic-egoism-fancy.css
 │   ├── visonic-egoism-geek.css
 │   ├── visonic-egoism-hope.css
@@ -134,6 +165,7 @@ Visonic-Themes/
 │   ├── visonic-streamer-sunset.css
 │   ├── visonic-glass-glacier.css
 │   └── visonic-glass-obsidian.css
+├── custom-fonts/                   # Masterpiece 系列专属排版字体集（11 款 TTF）
 └── visonic-fonts/                  # 字体依赖（Egoism 系列需要）
     ├── github-io/
     ├── pages-dev/
@@ -143,16 +175,23 @@ Visonic-Themes/
 ## 常见问题
 
 **Q：如何卸载主题？**
-删除 Typora 主题目录下的 `visonic-*.css` 文件和 `visonic-fonts/` 文件夹即可；若使用过一键安装的默认主题桥接，再删除 `github.user.css` 恢复 Typora 原默认样式。
+删除 Typora 主题目录下的 `*.css` 主题文件、`custom-fonts/` 和 `visonic-fonts/` 文件夹即可；若使用过一键安装的默认主题桥接，再删除 `github.user.css` 恢复 Typora 原默认样式。
+
+**Q：Masterpiece 典藏主题字体需要系统安装吗？**
+不需要。Masterpiece 系列主题通过 CSS 的 `@font-face` 本地相对路径（`custom-fonts/`）加载字体，只要保证 `custom-fonts/` 文件夹放在 Typora 的 `themes/` 目录下即可，无需在系统字体册中全局安装。
 
 **Q：Egoism 主题字体不生效？**
-Egoism 系列的特殊字体（如 DingTalk JinBuTi、Smiley Sans 等）通过 `visonic-fonts/` 中的 CSS 从 CDN 加载，需联网才能生效；离线时会自动回退到系统字体，不影响使用。Streamer 系列不依赖任何字体包。
+Egoism 系列的特殊字体（如 DingTalk JinBuTi、Smiley Sans 等）通过 `visonic-fonts/` 中的 CSS 从 CDN 加载，需联网才能生效；离线时会自动回退到系统字体，不影响使用。Streamer 系列与 Glass 系列不依赖任何字体包。
 
 **Q：动画太多想关掉怎么办？**
 开启系统"减少动态效果"（Windows：设置 → 辅助功能 → 视觉效果；macOS：系统设置 → 辅助功能 → 显示 → 减少动态效果），所有主题会自动关闭动画。
 
 **Q：主题在亮色 / 暗色模式间如何切换？**
-Egoism 系列每款主题自动跟随 Typora 的昼夜模式适配；Streamer 系列通过不同的主题文件区分（如 Sakura / Sunset 为亮色，Matrix / Nebula 为暗色）。
+Egoism 系列每款主题自动跟随 Typora 的昼夜模式适配；Streamer 与 Masterpiece 系列通过不同的主题文件区分（如 Sakura / Sunset / Kyoto Paper 为浅色暖调，Matrix / Nebula / Cyberpunk Neon / Obsidian Gold 为深色暗调）。
+
+## 开发验证
+
+运行 `bash -n install.sh` 和 `python3 -m unittest discover -s tests -v`。测试在临时目录验证安装、现有主题保留、默认桥接备份、Linux XDG 配置路径、残缺安装包中止，以及 CSS 本地依赖完整性。GitHub Actions 在 Linux 和 macOS 上执行这些检查；Typora 实际渲染及 Windows 交互安装仍需对应系统验收。
 
 ## 更新日志
 

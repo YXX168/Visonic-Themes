@@ -1,0 +1,419 @@
+/*
+ * SYNTHWAVE RETRO // 合成浪潮 · 1984 迈阿密日落霓虹
+ * Typora Masterpiece Edition
+ */
+
+@font-face {
+  font-family: "Righteous";
+  src: url("custom-fonts/Righteous.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Audiowide";
+  src: url("custom-fonts/Audiowide.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("custom-fonts/JetBrainsMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --bg-color: #0e081f;
+  --side-bar-bg-color: #080414;
+  --text-color: #f0e6ff;
+  --select-text-bg-color: rgba(255, 42, 133, 0.38);
+  --item-hover-bg-color: rgba(255, 42, 133, 0.12);
+  --item-hover-text-color: #ff2a85;
+  --active-file-bg-color: rgba(255, 42, 133, 0.2);
+  --active-file-border-color: #00f0ff;
+  --active-file-text-color: #ffffff;
+  --primary-color: #ff2a85;
+}
+
+html, body {
+  background-color: #0e081f !important;
+  background-image: 
+    radial-gradient(ellipse at 50% 100%, rgba(255, 115, 0, 0.22) 0%, rgba(255, 42, 133, 0.18) 35%, transparent 75%),
+    radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.12) 0%, transparent 40%),
+    linear-gradient(rgba(255, 42, 133, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 42, 133, 0.08) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px !important;
+  background-attachment: fixed !important;
+  color: var(--text-color);
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+
+content {
+  background: transparent !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+#write {
+  background: transparent !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding: 40px 60px 120px !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 42, 133, 0.3);
+  border-radius: 3px;
+  box-shadow: 0 0 6px rgba(255, 42, 133, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.6);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+}
+
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6 {
+  font-family: "Righteous", "Audiowide", "PingFang SC", sans-serif;
+  color: #ffffff;
+  position: relative;
+  letter-spacing: 0.05em;
+}
+
+#write h1 {
+  font-size: 2.3rem;
+  text-align: center;
+  margin: 2.4em 0 1.5em;
+  padding: 24px 30px;
+  background: linear-gradient(180deg, rgba(255, 42, 133, 0.12) 0%, rgba(14, 8, 31, 0.85) 100%);
+  border: 2px solid #ff2a85;
+  box-shadow: 0 0 25px rgba(255, 42, 133, 0.45), inset 0 0 20px rgba(255, 42, 133, 0.18);
+  border-radius: 12px;
+}
+
+#write h1::before {
+  content: "⚡ OUTRUN 1984 // RETRO SYNTHWAVE ⚡";
+  display: block;
+  font-family: "Audiowide", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff;
+  margin-bottom: 12px;
+}
+
+#write h1 span {
+  background: linear-gradient(180deg, #ffffff 0%, #ff7300 45%, #ff2a85 75%, #b537f2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px rgba(255, 42, 133, 0.6));
+}
+
+#write h2 {
+  font-size: 1.55rem;
+  margin: 2em 0 1em;
+  padding: 8px 16px;
+  background: linear-gradient(90deg, rgba(255, 42, 133, 0.18) 0%, transparent 100%);
+  border-left: 4px solid #ff2a85;
+  box-shadow: -4px 0 14px rgba(255, 42, 133, 0.7);
+  color: #00f0ff;
+  display: flex;
+  align-items: center;
+}
+
+#write h2::before {
+  content: "[SIDE-A]";
+  font-family: "Audiowide", monospace;
+  font-size: 0.75rem;
+  color: #ffe600;
+  margin-right: 12px;
+  text-shadow: 0 0 8px #ffe600;
+}
+
+#write h3 {
+  font-size: 1.25rem;
+  margin: 1.6em 0 0.8em;
+  color: #ff2a85;
+  display: flex;
+  align-items: center;
+}
+
+#write h3::before {
+  content: "▶";
+  color: #00f0ff;
+  margin-right: 10px;
+  font-size: 0.9rem;
+  text-shadow: 0 0 8px #00f0ff;
+}
+
+#write blockquote {
+  position: relative;
+  margin: 1.8em 0;
+  padding: 22px 28px;
+  background: rgba(255, 42, 133, 0.06);
+  border: 1.5px solid #ff2a85;
+  border-left: 5px solid #00f0ff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 42, 133, 0.25), inset 0 0 15px rgba(255, 42, 133, 0.08);
+  color: #eedaff;
+}
+
+#write pre.md-fences {
+  position: relative;
+  margin: 2.2em 0;
+  padding: 44px 22px 20px 22px;
+  background: #090514;
+  border: 1.5px solid #ff2a85;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 42, 133, 0.25);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.92rem;
+  line-height: 1.85;
+}
+
+#write pre.md-fences::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ff2a85;
+  box-shadow: 19px 0 0 #ff7300, 38px 0 0 #00f0ff, 0 0 8px #ff2a85, 19px 0 8px #ff7300, 38px 0 8px #00f0ff;
+}
+
+#write pre.md-fences[lang]::after {
+  content: attr(lang);
+  position: absolute;
+  top: 11px;
+  right: 20px;
+  font-family: "Audiowide", monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.15);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  padding: 2px 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+}
+
+.cm-s-inner .cm-keyword { color: #ff2a85 !important; font-weight: bold; }
+.cm-s-inner .cm-atom { color: #b537f2 !important; }
+.cm-s-inner .cm-number { color: #ff7300 !important; }
+.cm-s-inner .cm-def { color: #00f0ff !important; }
+.cm-s-inner .cm-variable { color: #f0e6ff !important; }
+.cm-s-inner .cm-property { color: #ff708e !important; }
+.cm-s-inner .cm-operator { color: #00f0ff !important; }
+.cm-s-inner .cm-comment { color: #786494 !important; font-style: italic; }
+.cm-s-inner .cm-string { color: #ffe600 !important; }
+
+#write code, #write tt {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.88em;
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 4px;
+  padding: 2px 7px;
+  margin: 0 4px;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+}
+
+#write table {
+  width: 100%;
+  margin: 2.2em 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1.5px solid #ff2a85;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(14, 8, 31, 0.85);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 42, 133, 0.2);
+}
+
+#write table th {
+  background: linear-gradient(180deg, #25123d 0%, #150926 100%);
+  color: #00f0ff;
+  font-family: "Audiowide", sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  padding: 14px 18px;
+  border-bottom: 2px solid #ff2a85;
+}
+
+#write table td {
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(255, 42, 133, 0.15);
+  color: #e5d4fc;
+}
+
+#write table tr:last-child td {
+  border-bottom: none;
+}
+
+#write table tr:hover td {
+  background: rgba(255, 42, 133, 0.1);
+  color: #ffffff;
+}
+
+#write a {
+  color: #00f0ff;
+  text-decoration: none;
+  border-bottom: 1px dashed #00f0ff;
+  transition: all 0.25s ease;
+}
+
+#write a:hover {
+  color: #ff2a85;
+  border-bottom: 1px solid #ff2a85;
+  text-shadow: 0 0 12px #ff2a85;
+}
+
+#write hr {
+  height: 2px;
+  border: none;
+  background: linear-gradient(90deg, transparent 0%, #ff2a85 20%, #ffe600 50%, #00f0ff 80%, transparent 100%);
+  box-shadow: 0 0 10px rgba(255, 42, 133, 0.5), 0 0 18px rgba(0, 240, 255, 0.4);
+  margin: 3.5em 0;
+  position: relative;
+}
+
+#write hr::after {
+  content: "" !important;
+  display: none !important;
+}
+
+/* Custom Task List Checkboxes */
+.task-list-item input:before,
+.md-task-list-item input:before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 17px !important;
+  height: 17px !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+  border: 1.5px solid #00f0ff !important;
+  border-radius: 4px !important;
+  background-color: rgba(0, 240, 255, 0.1) !important;
+  margin-top: -0.25rem !important;
+  margin-left: 0 !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.4) !important;
+}
+
+.task-list-item input:checked:before,
+.task-list-item input[checked]:before,
+.html-for-mac .task-list-item input:checked:before {
+  content: "✓" !important;
+  font-size: 11px !important;
+  line-height: 14px !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  background-color: #ff2a85 !important;
+  border-color: #ff2a85 !important;
+  box-shadow: 0 0 12px rgba(255, 42, 133, 0.8) !important;
+}
+
+/* ==================== YAML Front Matter / Meta Block ==================== */
+#write pre.md-meta-block {
+  position: relative;
+  margin: 1.5em 0 2em;
+  padding: 56px 26px 24px 26px !important;
+  background: rgba(14, 8, 31, 0.85) !important;
+  border: 1.5px solid #ff2a85 !important;
+  border-left: 5px solid #00f0ff !important;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 42, 133, 0.25), inset 0 0 15px rgba(255, 42, 133, 0.08);
+  font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: #eedaff !important;
+  white-space: pre-wrap;
+  transition: all 0.3s ease;
+}
+
+#write pre.md-meta-block::after {
+  content: "⚡ METADATA // TRACK-00 ⚡";
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-family: "Audiowide", monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.15);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  padding: 2px 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+  pointer-events: none;
+}
+
+#write pre.md-meta-block:hover,
+#write pre.md-meta-block:focus,
+#write pre.md-meta-block.md-focus {
+  border-color: #00f0ff !important;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.4), inset 0 0 18px rgba(255, 42, 133, 0.15) !important;
+}
+
+#write mark {
+  background: rgba(255, 42, 133, 0.25);
+  color: #ff7300;
+  border-bottom: 2px solid #ff2a85;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+#write .md-toc {
+  background: rgba(14, 8, 31, 0.85);
+  border: 1.5px solid #ff2a85;
+  border-left: 5px solid #00f0ff;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 2em 0;
+  box-shadow: 0 0 20px rgba(255, 42, 133, 0.25);
+}
+
+#write .md-toc-item a {
+  color: #00f0ff !important;
+}
+
+#write .md-toc-item a:hover {
+  color: #ff2a85 !important;
+}
+
+#write sup.md-footnote {
+  background: rgba(255, 42, 133, 0.15);
+  color: #00f0ff;
+  border: 1px solid rgba(255, 42, 133, 0.4);
+}
+
+#write .footnotes {
+  border-top: 1px solid rgba(255, 42, 133, 0.3);
+  margin-top: 3em;
+  padding-top: 1.5em;
+  color: #a494ba;
+}

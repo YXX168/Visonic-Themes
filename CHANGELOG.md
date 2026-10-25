@@ -2,6 +2,41 @@
 
 本项目的所有重要变更将记录在此文件中。
 
+## [1.5.0] - 2026-10-25
+
+### 新增 (Added)
+- **全新 Masterpiece 典藏主题：Pure Cobalt（纯粹钴蓝，`pure-cobalt.css`）**：参考现代极简前沿设计语言，以纯粹无暇白底（`#ffffff`）、深夜极浓墨黑文本（`#111318`）与标志性皇家钴蓝（`#4d6bfe`）构建，支持超椭圆微浮卡片、居中独立胶囊徽标与高对比暗色代码块。
+- 主题全家桶总数扩充至 **21 款**（15 款经典 Visonic + 6 款 Masterpiece 典藏）。
+
+### 优化与重构 (Improved & Refactored)
+- **全面重构 Obsidian Gold（黑曜金境，`obsidian-gold.css`）**：彻底剔除原有杂乱的古典衬线字体与厚重土金渐变，改用现代苹果系 SF Pro / 现代无衬线字体，配以低调哑光黑曜岩卡片与洗练香槟金点缀。
+- **YAML Front Matter 元数据标签间距调优**：将全部主题的元数据块顶部留白扩大至 56px 并优化行高至 1.85，彻底消除右上角悬浮徽标与正文首行文字贴紧拥挤的问题。
+
+### 修复 (Fixed)
+- **Visonic Egoism 系列折叠与标题遮挡 Bug**：修复全部 6 款 Egoism 主题（Fancy, Geek, Hope, Joint, Solaris, Thinking）由于强制设置固定高度 50px 与旧式封面定位导致 YAML 被截断并与后方 H1 标题重叠覆盖的渲染缺陷。
+
+## [1.4.0] - 2026-10-24
+
+### 新增 Masterpiece · 典藏大师系列主题
+- **5 款全新 Masterpiece 典藏主题**：专为沉浸式专业创作与现代审美打造，融合前沿视觉流派与高品质西文排版：
+  - `cyberpunk-neon.css`（赛博极客 · 荒坂机能霓虹）：未来科技感、高对比黑黄/霓虹青荧光配色，配属 Audiowide、Orbitron 与 JetBrains Mono 本地字体。
+  - `kyoto-paper.css`（京都纸镜 · 和风禅茶与云烟素砚）：日式和纸温润质感、茶墨内敛风与静谧典雅排版，配属 Cormorant Garamond 与 JetBrains Mono。
+  - `obsidian-gold.css`（黑曜帝廷 · 典藏黑金与古法金箔）：奢华暗黑鎏金质感、金箔描边光晕与古典黑曜层次，配属 Cinzel Decorative 与 Cormorant Garamond。
+  - `spatial-aurora.css`（空间极光 · VisionOS 琉璃）：空间计算琉璃拟态、高斯模糊悬浮层级与动态极光柔光渐变，配属 Syne、Space Grotesk 与 JetBrains Mono。
+  - `synthwave-retro.css`（合成浪潮 · 1984 迈阿密日落霓虹）：复古蒸汽波/合成器浪潮粉紫夕阳渐变与网格光栅风，配属 Righteous、Audiowide 与 JetBrains Mono。
+- **配套 custom-fonts 专属字体集**：收录 11 款精选西文排版与代码字体（.ttf），通过 CSS `@font-face` 相对路径直接加载，纯本地渲染，无需联网亦无需在操作系统中全局安装。
+
+### 体验升级与 Typora 1.14.10+ 深度打磨
+- **全量同步更新 15 款经典 Visonic 主题**：全面适配 Typora 1.14.10+ 无边框模式与 macOS / Windows 现代 Unibody 顶栏融合标准，消除顶栏与正文区域硬色差与分割边框。
+- **Liquid Pro 极简液态光影标准**：优化全局渐变阻尼与光影过渡曲线，采用柔和高斯光晕散射，减轻长时间写作与代码阅读的视觉眩晕。
+
+### 安装脚本与工程自动化
+- **全平台一键安装支持**：Windows 脚本（`一键安装主题.bat`）与 macOS / Linux 脚本（`install.sh`）全面支持 20 款主题与两套字体资产库（`visonic-fonts/` 与 `custom-fonts/`）的自动化检测、备份与静默部署。
+- **自动化测试全覆盖**：更新测试套件与持续集成，全量校验 20 款主题的本地文件引用、字体依赖链路与目录结构完整性。
+
+### 文档更新
+- **README.md**：更新主题矩阵至 20 款，新增 Masterpiece 典藏专章、custom-fonts 字体集说明及 Typora 1.14.10+ 现代视觉特性。
+
 ## [1.3.2] - 2026-09-22
 
 ### 安装脚本与工程优化

@@ -1,0 +1,420 @@
+/*
+ * KYOTO PAPER // 京都纸镜 · 和风禅茶与云烟素砚
+ * Typora Masterpiece Edition
+ */
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("custom-fonts/CormorantGaramond-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("custom-fonts/CormorantGaramond-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("custom-fonts/JetBrainsMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --bg-color: #fbf8f3;
+  --side-bar-bg-color: #f4eee3;
+  --text-color: #2b2826;
+  --select-text-bg-color: rgba(201, 58, 44, 0.22);
+  --item-hover-bg-color: #ece3d2;
+  --item-hover-text-color: #c93a2c;
+  --active-file-bg-color: #e4d7c2;
+  --active-file-border-color: #c93a2c;
+  --active-file-text-color: #1f1d1b;
+  --primary-color: #c93a2c;
+}
+
+html, body {
+  background-color: #fbf8f3 !important;
+  background-image: 
+    radial-gradient(circle at 12% 12%, rgba(215, 200, 175, 0.3) 0%, transparent 45%),
+    radial-gradient(circle at 88% 88%, rgba(195, 175, 145, 0.25) 0%, transparent 45%) !important;
+  background-attachment: fixed !important;
+  color: var(--text-color);
+  font-family: "Songti SC", "STSong", "Hiragino Mincho ProN", "Kaiti SC", "Cormorant Garamond", "Georgia", serif;
+  font-size: 16.5px;
+  line-height: 1.95;
+  letter-spacing: 0.03em;
+  -webkit-font-smoothing: antialiased;
+}
+
+content {
+  background: transparent !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+#write {
+  background: transparent !important;
+  max-width: 880px !important;
+  margin: 0 auto !important;
+  padding: 40px 60px 120px !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(61, 90, 69, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 58, 44, 0.5);
+}
+
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6 {
+  font-family: "Songti SC", "Hiragino Mincho ProN", "STSong", serif;
+  font-weight: 700;
+  color: #221f1d;
+  position: relative;
+  letter-spacing: 0.05em;
+}
+
+#write h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 2.5em 0 1.6em;
+  padding: 24px 30px;
+  background: #f4eee2;
+  border: 1px solid #e2d7c3;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(70, 50, 30, 0.06);
+}
+
+#write h1::before {
+  content: "【 銘 】 和風禅意 · 墨染云水";
+  display: block;
+  font-family: "Kaiti SC", "STKaiti", serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  color: #c93a2c;
+  margin-bottom: 10px;
+}
+
+#write h1 span, #write h1 {
+  color: #1f1d1b;
+}
+
+#write h2 {
+  font-size: 1.5rem;
+  margin: 2.2em 0 1em;
+  padding: 8px 16px;
+  background: linear-gradient(90deg, rgba(61, 90, 69, 0.1) 0%, transparent 100%);
+  border-left: 4px solid #3d5a45;
+  color: #25392b;
+  display: flex;
+  align-items: center;
+}
+
+#write h2::before {
+  content: "■";
+  color: #c93a2c;
+  margin-right: 12px;
+  font-size: 0.85rem;
+}
+
+#write h3 {
+  font-size: 1.25rem;
+  margin: 1.6em 0 0.8em;
+  color: #3d5a45;
+  display: flex;
+  align-items: center;
+}
+
+#write h3::before {
+  content: "〇";
+  color: #c93a2c;
+  margin-right: 8px;
+  font-size: 0.85rem;
+}
+
+#write blockquote {
+  position: relative;
+  margin: 2em 0;
+  padding: 22px 28px;
+  background: #f4ede0;
+  border: 1px solid #e5dac7;
+  border-left: 4px solid #3d5a45;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 6px 20px rgba(60, 45, 25, 0.05);
+  color: #3b3734;
+  font-style: normal;
+  font-family: "Kaiti SC", "STKaiti", "Songti SC", serif;
+}
+
+#write blockquote::before {
+  content: "“";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 2.8rem;
+  color: rgba(201, 58, 44, 0.25);
+  line-height: 1;
+}
+
+#write pre.md-fences {
+  position: relative;
+  margin: 2.2em 0;
+  padding: 44px 22px 20px 22px;
+  background: #1e2023;
+  border: 1px solid #36393e;
+  border-radius: 8px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: #e6ebf2;
+}
+
+#write pre.md-fences::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #c93a2c;
+  box-shadow: 19px 0 0 #d4af37, 38px 0 0 #3d5a45;
+}
+
+#write pre.md-fences[lang]::after {
+  content: attr(lang);
+  position: absolute;
+  top: 11px;
+  right: 20px;
+  font-family: "Songti SC", serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e2d7c3;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+.cm-s-inner .cm-keyword { color: #ff7b72 !important; font-weight: bold; }
+.cm-s-inner .cm-atom { color: #d2a8ff !important; }
+.cm-s-inner .cm-number { color: #79c0ff !important; }
+.cm-s-inner .cm-def { color: #ffa657 !important; }
+.cm-s-inner .cm-variable { color: #e6ebf2 !important; }
+.cm-s-inner .cm-property { color: #ff7b72 !important; }
+.cm-s-inner .cm-operator { color: #79c0ff !important; }
+.cm-s-inner .cm-comment { color: #8b949e !important; font-style: italic; }
+.cm-s-inner .cm-string { color: #7ee787 !important; }
+
+#write code, #write tt {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.88em;
+  color: #c93a2c;
+  background: #f1e9da;
+  border: 1px solid #ded3be;
+  border-radius: 4px;
+  padding: 2px 7px;
+  margin: 0 4px;
+}
+
+#write table {
+  width: 100%;
+  margin: 2.2em 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #dfd4c0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fbf8f3;
+  box-shadow: 0 8px 24px rgba(70, 50, 30, 0.05);
+}
+
+#write table th {
+  background: #f1e8d7;
+  color: #25392b;
+  font-family: "Songti SC", serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 13px 18px;
+  border-bottom: 2px solid #3d5a45;
+}
+
+#write table td {
+  padding: 12px 18px;
+  border-bottom: 1px solid #e8decb;
+  color: #3b3734;
+}
+
+#write table tr:last-child td {
+  border-bottom: none;
+}
+
+#write table tr:hover td {
+  background: #f4eee2;
+}
+
+#write a {
+  color: #c93a2c;
+  text-decoration: none;
+  border-bottom: 1px solid #c93a2c;
+  transition: all 0.25s ease;
+}
+
+#write a:hover {
+  color: #3d5a45;
+  border-bottom: 1px solid #3d5a45;
+}
+
+#write hr {
+  height: 1px;
+  border: none;
+  background: linear-gradient(90deg, transparent 0%, #3d5a45 50%, transparent 100%);
+  margin: 3.5em 0;
+  position: relative;
+}
+
+#write hr::after {
+  content: "・ ・ ・ 〇 ・ ・ ・";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #c93a2c;
+  background: var(--bg-color);
+  padding: 0 14px;
+  font-size: 0.85rem;
+}
+
+/* Custom Task List Checkboxes */
+.task-list-item input:before,
+.md-task-list-item input:before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 17px !important;
+  height: 17px !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+  border: 1.5px solid #c93a2c !important;
+  border-radius: 50% !important;
+  background-color: #f4ede0 !important;
+  margin-top: -0.25rem !important;
+  margin-left: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.task-list-item input:checked:before,
+.task-list-item input[checked]:before,
+.html-for-mac .task-list-item input:checked:before {
+  content: "✓" !important;
+  font-size: 11px !important;
+  line-height: 14px !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  background-color: #c93a2c !important;
+  border-color: #c93a2c !important;
+}
+
+/* ==================== YAML Front Matter / Meta Block ==================== */
+#write pre.md-meta-block {
+  position: relative;
+  margin: 1.5em 0 2em;
+  padding: 56px 26px 24px 26px !important;
+  background: #f4eee2 !important;
+  border: 1px solid #e2d7c3 !important;
+  border-left: 4px solid #c93a2c !important;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(70, 50, 30, 0.05);
+  font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: #4a443f !important;
+  white-space: pre-wrap;
+  transition: all 0.3s ease;
+}
+
+#write pre.md-meta-block::after {
+  content: "【 題簽 】 卷頭 · 書志";
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-family: "Kaiti SC", "STKaiti", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: #c93a2c;
+  background: rgba(201, 58, 44, 0.08);
+  border: 1px solid rgba(201, 58, 44, 0.25);
+  padding: 2px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+#write pre.md-meta-block:hover,
+#write pre.md-meta-block:focus,
+#write pre.md-meta-block.md-focus {
+  border-color: #3d5a45 !important;
+  border-left-color: #c93a2c !important;
+  box-shadow: 0 8px 24px rgba(70, 50, 30, 0.09) !important;
+}
+
+#write mark {
+  background: rgba(201, 58, 44, 0.12);
+  color: #c93a2c;
+  border-bottom: 1px solid #c93a2c;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+#write .md-toc {
+  background: #f4eee2;
+  border: 1px solid #dfd4c0;
+  border-left: 4px solid #3d5a45;
+  border-radius: 8px;
+  padding: 22px 26px;
+  margin: 2em 0;
+  box-shadow: 0 8px 24px rgba(70, 50, 30, 0.05);
+}
+
+#write .md-toc-item a {
+  color: #25392b !important;
+}
+
+#write .md-toc-item a:hover {
+  color: #c93a2c !important;
+}
+
+#write sup.md-footnote {
+  background: #f1e9da;
+  color: #c93a2c;
+  border: 1px solid #ded3be;
+  border-radius: 3px;
+}
+
+#write .footnotes {
+  border-top: 1px solid #e8decb;
+  margin-top: 3em;
+  padding-top: 1.5em;
+  color: #6a645d;
+}
