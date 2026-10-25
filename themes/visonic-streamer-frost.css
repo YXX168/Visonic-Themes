@@ -1550,3 +1550,13 @@ span.file-node-title {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(167, 139, 250, 0.2);
 }
+
+/* Extra breathing room for YAML front matter badge */
+pre.md-meta-block {
+  padding-top: 48px !important;
+  line-height: 1.8 !important;
+}
+pre.md-meta-block::after {
+  top: 10px !important;
+  right: 20px !important;
+}

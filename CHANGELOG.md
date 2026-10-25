@@ -2,6 +2,19 @@
 
 本项目的所有重要变更将记录在此文件中。
 
+## [1.5.0] - 2026-10-25
+
+### 新增 (Added)
+- **全新 Masterpiece 典藏主题：Pure Cobalt（纯粹钴蓝，`pure-cobalt.css`）**：参考现代极简前沿设计语言，以纯粹无暇白底（`#ffffff`）、深夜极浓墨黑文本（`#111318`）与标志性皇家钴蓝（`#4d6bfe`）构建，支持超椭圆微浮卡片、居中独立胶囊徽标与高对比暗色代码块。
+- 主题全家桶总数扩充至 **21 款**（15 款经典 Visonic + 6 款 Masterpiece 典藏）。
+
+### 优化与重构 (Improved & Refactored)
+- **全面重构 Obsidian Gold（黑曜金境，`obsidian-gold.css`）**：彻底剔除原有杂乱的古典衬线字体与厚重土金渐变，改用现代苹果系 SF Pro / 现代无衬线字体，配以低调哑光黑曜岩卡片与洗练香槟金点缀。
+- **YAML Front Matter 元数据标签间距调优**：将全部主题的元数据块顶部留白扩大至 56px 并优化行高至 1.85，彻底消除右上角悬浮徽标与正文首行文字贴紧拥挤的问题。
+
+### 修复 (Fixed)
+- **Visonic Egoism 系列折叠与标题遮挡 Bug**：修复全部 6 款 Egoism 主题（Fancy, Geek, Hope, Joint, Solaris, Thinking）由于强制设置固定高度 50px 与旧式封面定位导致 YAML 被截断并与后方 H1 标题重叠覆盖的渲染缺陷。
+
 ## [1.4.0] - 2026-10-24
 
 ### 新增 Masterpiece · 典藏大师系列主题

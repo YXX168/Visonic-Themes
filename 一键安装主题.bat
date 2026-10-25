@@ -57,10 +57,10 @@ if !errorlevel! equ 0 (
 echo Select install mode / 请选择安装模式:
 echo.
 echo   [1] Clean install (Backup and replace theme folder)
-echo       清爽全新安装（自动备份已有主题，清空后全新安装 20 款主题：15 款 Visonic + 5 款 Masterpiece 典藏主题）
+echo       清爽全新安装（自动备份已有主题，清空后全新安装 21 款主题：15 款 Visonic + 6 款 Masterpiece 典藏主题）
 echo.
 echo   [2] Keep existing themes and add/update Visonic themes (Recommended)
-echo       保留现有主题（不删除其他主题，新增并覆盖 20 款主题：15 款 Visonic + 5 款 Masterpiece 典藏主题，推荐）
+echo       保留现有主题（不删除其他主题，新增并覆盖 21 款主题：15 款 Visonic + 6 款 Masterpiece 典藏主题，推荐）
 echo.
 choice /c 12 /n /m "Type 1 or 2 [输入 1 或 2]: "
 if errorlevel 2 (

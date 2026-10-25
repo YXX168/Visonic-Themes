@@ -32,7 +32,7 @@ class DistributionTests(unittest.TestCase):
         documented = set(re.findall(r'`([\w-]+\.css)`', (ROOT / 'README.md').read_text()))
         installed_themes = {p.name for p in target.glob('*.css') if p.name not in ('other.css', 'github.user.css', 'github.user.css.bak')}
         self.assertEqual(installed_themes, documented)
-        self.assertEqual(len(installed_themes), 20)
+        self.assertEqual(len(installed_themes), 21)
         # Verify custom-fonts
         for font_file in ROOT.glob('custom-fonts/*'):
             installed_font = target / 'custom-fonts' / font_file.name

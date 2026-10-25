@@ -335,3 +335,49 @@
   border-radius: 8px;
   padding: 8px 12px;
 }
+
+/* Fix YAML Front Matter collapse & overflow bug in Visonic Egoism */
+content > #write > pre.md-meta-block:first-child {
+  height: auto !important;
+  max-height: none !important;
+  padding: 24px 18px 16px 18px !important;
+  margin-top: 10px !important;
+  overflow: visible !important;
+}
+content > #write > pre.md-meta-block:first-child:before {
+  position: static !important;
+  display: block !important;
+  width: auto !important;
+  margin-top: -14px !important;
+  margin-bottom: 12px !important;
+  border-radius: 4px !important;
+}
+content > #write > pre.md-meta-block:first-child:after {
+  display: none !important;
+}
+
+/* Fix H1 / Heading overflow & cover layout bug in Visonic Egoism */
+#write h1,
+#write > h1:first-of-type,
+#write > pre.md-meta-block:first-child + h1,
+#write > pre.md-meta-block:first-child + h6 ~ h1,
+#write > h6:first-child ~ h1 {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  text-align: left !important;
+  margin: 1.8em 0 1.2em 0 !important;
+  padding: 14px 20px !important;
+  display: block !important;
+  position: relative !important;
+}
+
+#write h1:before,
+#write > h1:first-of-type:before,
+#write > pre.md-meta-block:first-child + h1:before,
+#write > pre.md-meta-block:first-child + h6 ~ h1:before,
+#write > h6:first-child ~ h1:before {
+  position: static !important;
+  display: inline-block !important;
+  margin-right: 8px !important;
+}

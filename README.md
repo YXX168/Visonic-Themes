@@ -1,15 +1,15 @@
 # Visonic Themes for Typora
 
-> Visonic 主题系列 — 一套为 Typora 打造的霓虹动画与艺术排版主题全家桶，**20 款主题**（15 款经典 Visonic 主题 + 5 款 Masterpiece 典藏主题）覆盖全天候写作与代码记录场景。
+> Visonic 主题系列 — 一套为 Typora 打造的霓虹动画与艺术排版主题全家桶，**21 款主题**（15 款经典 Visonic 主题 + 6 款 Masterpiece 典藏主题）覆盖全天候写作与代码记录场景。
 
 ![Release](https://img.shields.io/github/v/release/YXX168/Visonic-Themes?label=%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC)
 ![License](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-green)
-![Themes](https://img.shields.io/badge/%E4%B8%BB%E9%A2%98-20%20%E6%AC%BE-8b5cf6)
+![Themes](https://img.shields.io/badge/%E4%B8%BB%E9%A2%98-21%20%E6%AC%BE-8b5cf6)
 ![Platform](https://img.shields.io/badge/%E5%B9%B3%E5%8F%B0-Windows%20%7C%20macOS%20%7C%20Linux-blue)
 
 ## 系列总览
 
-### Masterpiece · 典藏大师系列（5 款全新）
+### Masterpiece · 典藏大师系列（6 款全新）
 
 > 融合现代前沿视觉风格与高品质西文排版字体，专为沉浸式专业创作设计，配属 `custom-fonts/` 本地专属字体集。
 
@@ -20,6 +20,7 @@
 | Obsidian Gold | `obsidian-gold.css` | 黑曜帝廷 · 典藏黑金与古法金箔 | Cinzel Decorative / Cormorant Garamond | 奢华暗黑鎏金质感、金箔描边光晕、古典衬线与黑曜岩层次 |
 | Spatial Aurora | `spatial-aurora.css` | 空间极光 · VisionOS 琉璃 | Syne / Space Grotesk / JetBrains Mono | 空间计算琉璃拟态、高斯模糊悬浮层级与动态极光柔光渐变 |
 | Synthwave Retro | `synthwave-retro.css` | 合成浪潮 · 1984 迈阿密日落霓虹 | Righteous / Audiowide / JetBrains Mono | 复古蒸汽波、1984 迈阿密日落紫粉金渐变、网格光栅与复古打字机感 |
+| Pure Cobalt | `pure-cobalt.css` | 纯粹钴蓝 · 极简未来工作台 | JetBrains Mono / SF Pro | 纯净极简白底、标志性皇家钴蓝点缀、微蓝调悬浮卡片、居中胶囊徽标与高质感暗黑代码块 |
 
 ### Egoism · 液态光影（6 款）
 
@@ -75,7 +76,7 @@ bash install.sh
 ```
 3. 重启 Typora。
 
-脚本会自动复制 `themes/` 下的全量 20 款主题文件，并同步 `visonic-fonts/` 与 `custom-fonts/` 专属字体集到 Typora 主题目录。
+脚本会自动复制 `themes/` 下的全量 21 款主题文件，并同步 `visonic-fonts/` 与 `custom-fonts/` 专属字体集到 Typora 主题目录。
 Linux 遵循 `XDG_CONFIG_HOME`（未设置时使用 `~/.config`）。如需指定其他主题目录，可运行 `bash install.sh "/path/to/Typora/themes"`。缺少主题或字体目录的残缺安装包会在写入前中止。
 同时会创建 `github.user.css` 默认主题桥接文件，让 Typora 在默认 GitHub 主题下也自动加载 `visonic-streamer-nebula.css`。如需恢复 Typora 原默认样式，删除主题目录中的 `github.user.css` 即可。
 
@@ -91,7 +92,7 @@ Linux 遵循 `XDG_CONFIG_HOME`（未设置时使用 `~/.config`）。如需指�
 
 #### 步骤 2：安装主题
 
-将 `themes/` 目录下的 20 个 `*.css` 文件（15 款 Visonic 主题 + 5 款 Masterpiece 典藏主题）复制到 Typora 主题目录：
+将 `themes/` 目录下的 21 个 `*.css` 文件（15 款 Visonic 主题 + 6 款 Masterpiece 典藏主题）复制到 Typora 主题目录：
 
 - **Windows**: `C:\Users\<用户名>\AppData\Roaming\Typora\themes\`
 - **macOS**: `/Users/<用户名>/Library/Application Support/abnerworks.Typora/themes/`
@@ -103,7 +104,7 @@ Linux 遵循 `XDG_CONFIG_HOME`（未设置时使用 `~/.config`）。如需指�
 
 > **提示**:
 > - `visonic-egoism-*.css` 需要 `visonic-fonts` 字体依赖才能正常渲染。
-> - 5 款 Masterpiece 典藏主题依赖 `custom-fonts` 字体目录中的本地高清字体。
+> - 6 款 Masterpiece 典藏主题依赖 `custom-fonts` 字体目录中的本地高清字体。
 > - `visonic-streamer-*.css` 与 `visonic-glass-*.css` 为独立主题，无需额外依赖。
 
 ## 特性
@@ -113,7 +114,7 @@ Linux 遵循 `XDG_CONFIG_HOME`（未设置时使用 `~/.config`）。如需指�
 - **VLOOK Liquid Pro 防眩晕舒缓光影动画**：全面重构流光与渐变帧率曲线，降低刺眼的高饱和频闪，引入高斯光晕散射与微呼吸阻尼动效，既保留灵动的光影质感，又大幅减轻长时间高强度阅读与写作时的视疲劳。
 
 ### Masterpiece 系列 — 典藏质感
-- **五大顶级美学流派**：未来赛博机能（`cyberpunk-neon.css`）、日式枯山水禅茶和纸（`kyoto-paper.css`）、皇家古法黑曜金箔（`obsidian-gold.css`）、苹果空间计算琉璃（`spatial-aurora.css`）、1984 迈阿密蒸汽波（`synthwave-retro.css`）。
+- **六大顶级美学流派**：未来赛博机能（`cyberpunk-neon.css`）、日式枯山水禅茶和纸（`kyoto-paper.css`）、皇家古法黑曜金箔（`obsidian-gold.css`）、苹果空间计算琉璃（`spatial-aurora.css`）、1984 迈阿密蒸汽波（`synthwave-retro.css`）、纯粹极简未来工作台（`pure-cobalt.css`）。
 - **专属本地字体集（custom-fonts）**：集成 11 款精选现代西文及专业代码字体（JetBrains Mono, Cormorant Garamond, Audiowide, Orbitron, Righteous, Cinzel Decorative, Syne, Space Grotesk, Share Tech Mono），纯本地文件直读，无需联网亦无需在操作系统中全局安装字体即可完美呈现。
 
 ### Egoism 系列 — 液态光影
@@ -142,12 +143,13 @@ Visonic-Themes/
 ├── CHANGELOG.md
 ├── 一键安装主题.bat                 # Windows 一键安装脚本
 ├── install.sh                       # macOS / Linux 一键安装脚本
-├── themes/                         # 20 个主题（平铺）
+├── themes/                         # 21 个主题（平铺）
 │   ├── cyberpunk-neon.css           # 赛博极客 · 荒坂机能霓虹
 │   ├── kyoto-paper.css              # 京都纸镜 · 和风禅茶与云烟素砚
 │   ├── obsidian-gold.css            # 黑曜帝廷 · 典藏黑金与古法金箔
 │   ├── spatial-aurora.css           # 空间极光 · VisionOS 琉璃
 │   ├── synthwave-retro.css          # 合成浪潮 · 1984 迈阿密日落霓虹
+│   ├── pure-cobalt.css              # 纯粹钴蓝 · 极简未来工作台
 │   ├── visonic-egoism-fancy.css
 │   ├── visonic-egoism-geek.css
 │   ├── visonic-egoism-hope.css

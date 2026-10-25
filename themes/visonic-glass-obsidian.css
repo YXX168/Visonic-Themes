@@ -1749,3 +1749,13 @@ footer.ty-footer {
   color: var(--primary-color) !important;
 }
 
+
+/* Extra breathing room for YAML front matter badge */
+pre.md-meta-block {
+  padding-top: 48px !important;
+  line-height: 1.8 !important;
+}
+pre.md-meta-block::after {
+  top: 10px !important;
+  right: 20px !important;
+}

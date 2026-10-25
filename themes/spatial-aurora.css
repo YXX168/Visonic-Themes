@@ -185,7 +185,7 @@ content {
 #write blockquote::before {
   content: "“";
   position: absolute;
-  top: 10px;
+  top: 12px;
   left: 14px;
   font-size: 3rem;
   font-family: serif;
@@ -206,7 +206,7 @@ content {
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55), 0 0 30px rgba(138, 99, 255, 0.18);
   font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
   font-size: 0.92rem;
-  line-height: 1.7;
+  line-height: 1.85;
 }
 
 #write pre.md-fences::before {
@@ -365,4 +365,93 @@ content {
   background-color: #9d7aff !important;
   border-color: #9d7aff !important;
   box-shadow: 0 0 12px rgba(157, 122, 255, 0.7) !important;
+}
+
+/* ==================== YAML Front Matter / Meta Block ==================== */
+#write pre.md-meta-block {
+  position: relative;
+  margin: 1.5em 0 2em;
+  padding: 56px 26px 24px 26px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-left: 4px solid #7ef2ff !important;
+  border-radius: 16px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: #c5cef7 !important;
+  white-space: pre-wrap;
+  transition: all 0.3s ease;
+}
+
+#write pre.md-meta-block::after {
+  content: "✦ SPATIAL.META // YAML ✦";
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #bfaaff;
+  background: rgba(157, 122, 255, 0.18);
+  border: 1px solid rgba(157, 122, 255, 0.4);
+  padding: 2px 12px;
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+#write pre.md-meta-block:hover,
+#write pre.md-meta-block:focus,
+#write pre.md-meta-block.md-focus {
+  border-color: rgba(126, 242, 255, 0.4) !important;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45), 0 0 24px rgba(138, 99, 255, 0.2) !important;
+}
+
+#write mark {
+  background: rgba(126, 242, 255, 0.2);
+  color: #7ef2ff;
+  border-bottom: 2px solid #7ef2ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+#write .md-toc {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  border-left: 4px solid #9d7aff;
+  border-radius: 16px;
+  padding: 22px 26px;
+  margin: 2em 0;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+}
+
+#write .md-toc-item a {
+  color: #7ef2ff !important;
+}
+
+#write .md-toc-item a:hover {
+  color: #f472b6 !important;
+}
+
+#write sup.md-footnote {
+  background: rgba(157, 122, 255, 0.18);
+  color: #bfaaff;
+  border: 1px solid rgba(157, 122, 255, 0.35);
+  border-radius: 4px;
+}
+
+#write .footnotes {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 3em;
+  padding-top: 1.5em;
+  color: #9aa5d1;
 }

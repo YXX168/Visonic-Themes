@@ -185,7 +185,7 @@ content {
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 42, 133, 0.25);
   font-family: "JetBrains Mono", monospace;
   font-size: 0.92rem;
-  line-height: 1.7;
+  line-height: 1.85;
 }
 
 #write pre.md-fences::before {
@@ -333,4 +333,87 @@ content {
   background-color: #ff2a85 !important;
   border-color: #ff2a85 !important;
   box-shadow: 0 0 12px rgba(255, 42, 133, 0.8) !important;
+}
+
+/* ==================== YAML Front Matter / Meta Block ==================== */
+#write pre.md-meta-block {
+  position: relative;
+  margin: 1.5em 0 2em;
+  padding: 56px 26px 24px 26px !important;
+  background: rgba(14, 8, 31, 0.85) !important;
+  border: 1.5px solid #ff2a85 !important;
+  border-left: 5px solid #00f0ff !important;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 42, 133, 0.25), inset 0 0 15px rgba(255, 42, 133, 0.08);
+  font-family: "JetBrains Mono", Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: #eedaff !important;
+  white-space: pre-wrap;
+  transition: all 0.3s ease;
+}
+
+#write pre.md-meta-block::after {
+  content: "⚡ METADATA // TRACK-00 ⚡";
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-family: "Audiowide", monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.15);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  padding: 2px 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+  pointer-events: none;
+}
+
+#write pre.md-meta-block:hover,
+#write pre.md-meta-block:focus,
+#write pre.md-meta-block.md-focus {
+  border-color: #00f0ff !important;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.4), inset 0 0 18px rgba(255, 42, 133, 0.15) !important;
+}
+
+#write mark {
+  background: rgba(255, 42, 133, 0.25);
+  color: #ff7300;
+  border-bottom: 2px solid #ff2a85;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+#write .md-toc {
+  background: rgba(14, 8, 31, 0.85);
+  border: 1.5px solid #ff2a85;
+  border-left: 5px solid #00f0ff;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 2em 0;
+  box-shadow: 0 0 20px rgba(255, 42, 133, 0.25);
+}
+
+#write .md-toc-item a {
+  color: #00f0ff !important;
+}
+
+#write .md-toc-item a:hover {
+  color: #ff2a85 !important;
+}
+
+#write sup.md-footnote {
+  background: rgba(255, 42, 133, 0.15);
+  color: #00f0ff;
+  border: 1px solid rgba(255, 42, 133, 0.4);
+}
+
+#write .footnotes {
+  border-top: 1px solid rgba(255, 42, 133, 0.3);
+  margin-top: 3em;
+  padding-top: 1.5em;
+  color: #a494ba;
 }
